@@ -1,0 +1,17 @@
+@font-face {
+  font-family: LCD;
+  src: url(14\ Segment\ LED.ttf);
+}
+
+body {
+  /* background: url(matrix\ code\ 2.gif); */
+}
+
+h1 {
+  background: url(matrix\ code\ 2.gif);
+  background-clip: text;
+  font-size: 100px;
+  color: transparent;
+  font-weight: 900;
+  /* font-family: "LCD", sans-serif; */
+}
