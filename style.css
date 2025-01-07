@@ -6,6 +6,7 @@
 body {
   /* background: url(matrix\ code\ 2.gif); */
   --border: green;
+  overflow: clip;
 }
 
 h1 {
@@ -18,7 +19,7 @@ h1 {
   /* font-family: "LCD", sans-serif; */
 }
 #digitize {
-  width: 40%;
+  width: 70%;
   aspect-ratio: 6/4;
   background-color: black;
   position: absolute;
@@ -44,8 +45,9 @@ h1 {
 }
 
 .digiBox {
-  background: rgba(255, 255, 255, 0.349);
-  border: 1px solid black;
+  background: rgb(0, 0, 0);
+  /* background: radial-gradient(green 70%, black 71%); */
+  position: relative;
 }
 .digiRow {
   display: flex;
@@ -74,4 +76,13 @@ h1 {
 
 .digiRow:last-child .digiBox {
   border-bottom: 10px solid var(--border);
+}
+
+#subDigiContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
 }
