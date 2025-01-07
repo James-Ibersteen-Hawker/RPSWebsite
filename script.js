@@ -430,12 +430,13 @@ function digitize() {
   console.log(allBoxes);
   setTimeout(
     () => {
+      style.innerHTML = "";
       for (let i = 0; i < allBoxes.length; i++) {
-        allBoxes.classList.remove("");
         allBoxes[i].classList.add("fadeAnimClass");
       }
     },
     3000,
-    allBoxes
+    allBoxes,
+    style
   );
 }
