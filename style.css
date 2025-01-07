@@ -5,6 +5,7 @@
 
 body {
   /* background: url(matrix\ code\ 2.gif); */
+  --border: green;
 }
 
 h1 {
@@ -18,16 +19,54 @@ h1 {
 #digitize {
   width: 40%;
   aspect-ratio: 6/4;
-  background-color: red;
+  background-color: black;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+  box-sizing: border-box;
 }
-.box {
-  background: blue;
+
+#digitize::before {
+  content: "";
+  border: 10px solid var(--border);
+  width: calc(100%);
+  height: calc(100%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.digiBox {
+  background: rgba(255, 255, 255, 0.349);
 }
 .digiRow {
   display: flex;
+  position: relative;
+  z-index: 2;
+}
+#digiContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.digiRow .digiBox:first-child {
+  border-left: 10px solid yellow;
+}
+
+.digiRow .digiBox:last-child {
+  border-right: 10px solid yellow;
+}
+
+.digiRow:first-child .digiBox {
+  border-top: 10px solid yellow;
+}
+
+.digiRow:last-child .digiBox {
+  border-bottom: 10px solid yellow;
 }

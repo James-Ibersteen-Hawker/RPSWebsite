@@ -2,9 +2,10 @@ window.onload = digitize();
 
 function digitize() {
   let across = 10;
-  let vert = 4;
+  let vert = 7;
   let base = document.getElementById("digitize");
   base.setAttribute("style", "background: green;");
+  let container = document.getElementById("digiContainer");
   let divMeasure = Math.floor(base.offsetWidth / across);
   base.setAttribute("style", `height: ${divMeasure * vert}px;`);
   let divArr = [];
@@ -14,14 +15,14 @@ function digitize() {
     row.classList.add("digiRow");
     for (let q = 0; q < across; q++) {
       let box = document.createElement("div");
-      box.classList.add("box");
+      box.classList.add("digiBox");
       box.id = `box_${i}_${q}`;
       box.setAttribute(
         "style",
-        `height: ${divMeasure}px; width: ${divMeasure}`
+        `height: ${divMeasure}px; width: ${divMeasure}px;`
       );
       row.append(box);
     }
-    base.append(row);
+    container.append(row);
   }
 }
