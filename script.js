@@ -2,9 +2,10 @@ function digitize() {
   let across = 10;
   let vert = 7;
   let base = document.getElementById("digitize");
-  base.setAttribute("style", "background: green;");
   let container = document.getElementById("digiContainer");
+  container.classList.remove("d-none");
   let subContainer = document.getElementById("subDigiContainer");
+  subContainer.classList.remove("d-none");
   let divMeasure = Math.floor(base.offsetWidth / across);
   base.setAttribute(
     "style",
@@ -285,9 +286,8 @@ function digitize() {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-      }    
+      }
   `;
-  //magic number is 1.27
   let subtract = 100 / 24;
   let fadeAnim = ` @keyframes fadeOff {
   0% {
@@ -295,7 +295,7 @@ function digitize() {
   }
   20% {
   background: transparent;
-  }    
+  }
   21% {
   background: url("matrixcode2.gif"), radial-gradient(transparent ${
     100 - subtract * 24
@@ -455,9 +455,6 @@ function digitize() {
       setTimeout(
         () => {
           fadeIn.classList.remove("fadeIn");
-          setTimeout(() => {
-            window.location = window.location.href;
-          }, 1000);
         },
         3000,
         fadeIn

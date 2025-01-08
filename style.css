@@ -16,14 +16,17 @@ body {
 }
 
 h1 {
+  position: relative;
   background: url(matrixcode2.gif);
   background-clip: text;
   font-size: 70px;
   color: transparent;
   font-weight: 900;
   text-align: center;
-  position: relative;
-  margin-bottom: 60px;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid var(--border);
 }
 
 h1::after {
@@ -31,7 +34,7 @@ h1::after {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0;
+  top: 60px;
   left: 0;
   z-index: -1;
   text-shadow: 0px 0px 5px white, 0px 0px 2px black, 0px 0px 2px black,
@@ -39,9 +42,9 @@ h1::after {
 }
 .matrix-edition {
   position: absolute;
-  bottom: -50%;
   left: 50%;
-  transform: translate(-50%);
+  bottom: 0;
+  transform: translate(-50%, 50%);
   height: auto;
   background: var(--border);
   padding: 5px;
@@ -53,6 +56,7 @@ h1::after {
   border-bottom: 10px solid var(--dark-gray);
   box-sizing: border-box;
   filter: drop-shadow(0px 0px 5px var(--border));
+  z-index: 2;
 }
 .matrix-edition .text {
   background: url(matrixcode2.gif);
@@ -60,8 +64,18 @@ h1::after {
   background-clip: text;
   color: transparent;
 }
-.matrix-edition .text::after {
-  content: "Matrix Edition";
+.word1 {
+  content: "Matrix";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  text-shadow: 0px 0px 5px white;
+}
+.word2 {
+  content: "Edition";
   position: absolute;
   width: 100%;
   height: 100%;
@@ -120,14 +134,13 @@ h1::after {
 }
 #digitize {
   aspect-ratio: 6/4;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(blackGrunge2.avif);
+  background: url(blackGrunge2.png);
   background-size: 100% 100%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 10 !important;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -136,7 +149,15 @@ h1::after {
   border-radius: 20px;
 }
 .off h1 {
-  background: none;
+  display: none;
+}
+
+.off .matrix-edition {
+  display: none;
+}
+
+.off .playContainer {
+  display: none;
 }
 
 #digitize::before {
@@ -151,10 +172,15 @@ h1::after {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 20px;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  z-index: -1 !important;
 }
 
 .digiBox {
-  background: rgb(0, 0, 0);
+  background: url(blackGrunge2.png);
   /* background: radial-gradient(green 70%, black 71%); */
   position: relative;
   z-index: 0;
@@ -202,7 +228,7 @@ h1::after {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 3;
+  z-index: 11 !important;
 }
 .fadeIn {
   display: block !important;
@@ -211,6 +237,7 @@ h1::after {
   animation-duration: 3s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
+  z-index: 11 !important;
 }
 
 @keyframes fadeIn {
@@ -229,7 +256,172 @@ h1::after {
 }
 
 .play {
-  width: 60px;
+  cursor: pointer;
+  height: 150px;
   aspect-ratio: 1/1;
-  background: white;
+  background: url(blackGrunge2.png);
+  border-radius: 50%;
+  position: relative;
+  transition: 1s;
+}
+
+.play::before {
+  content: "";
+  cursor: pointer;
+  border-radius: 50%;
+  border: 5px solid var(--border);
+  filter: drop-shadow(0px 0px 5px rgb(82, 181, 12))
+    drop-shadow(0px 0px 3px rgb(8, 149, 8));
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+}
+
+.play:hover {
+  transform: scale(1.1);
+  transition: 1s;
+}
+
+.playContainer {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes pulse {
+  0% {
+    filter: drop-shadow(0px 0px 5px rgb(82, 181, 12))
+      drop-shadow(0px 0px 3px rgb(8, 149, 8));
+    border: 5px solid #008f11;
+  }
+  50% {
+    filter: drop-shadow(0px 0px 5px rgb(97, 219, 10))
+      drop-shadow(0px 0px 3px rgb(13, 204, 13));
+    border: 5px solid #06b81b;
+  }
+  100% {
+    filter: drop-shadow(0px 0px 5px rgb(82, 181, 12))
+      drop-shadow(0px 0px 3px rgb(8, 149, 8));
+    border: 5px solid #008f11;
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-35%, -50%);
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent;
+  border-left: 70px solid var(--border);
+}
+
+#box_4_4::after {
+  content: " ";
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 100%;
+  background: url(blackGrunge2.png);
+  border-top: 5px solid var(--border);
+  border-left: 5px solid var(--border);
+}
+#box_4_5::after {
+  content: " ";
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  bottom: 0;
+  left: 0;
+  border-top-right-radius: 100%;
+  background: url(blackGrunge2.png);
+  border-top: 5px solid var(--border);
+  border-right: 5px solid var(--border);
+}
+#box_5_4::after {
+  content: " ";
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: 0;
+  right: 0;
+  border-bottom-left-radius: 100%;
+  background: url(blackGrunge2.png);
+  border-bottom: 5px solid var(--border);
+  border-left: 5px solid var(--border);
+}
+#box_5_5::after {
+  content: " ";
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: 0;
+  left: 0;
+  border-bottom-right-radius: 100%;
+  background: url(blackGrunge2.png);
+  border-right: 5px solid var(--border);
+  border-bottom: 5px solid var(--border);
+}
+
+#box_1_0_sub,
+#box_1_1_sub,
+#box_1_2_sub,
+#box_1_3_sub,
+#box_1_4_sub,
+#box_1_5_sub,
+#box_1_6_sub {
+  background: url(matrixcode2.gif) !important;
+}
+
+div[id^="box_1"]:not([id$="_sub"])::after {
+  background: url(matrixcode2.gif);
+  color: transparent;
+  background-clip: text;
+  font-weight: 900;
+  font-size: 70px;
+  width: 100%;
+  height: 100%;
+  overflow: clip;
+  text-align: right;
+}
+
+#box_1_0::after {
+  content: "R";
+}
+#box_1_1::after {
+  content: "o";
+}
+#box_1_2::after {
+  content: "c";
+}
+#box_1_3::after {
+  content: "k";
+}
+#box_1_4::after {
+  content: "P";
+}
+#box_1_5::after {
+  content: "a";
+}
+#box_1_6::after {
+  content: "p";
+}
+#box_1_7::after {
+  content: "e";
+}
+#box_1_8::after {
+  content: "r";
+}
+#box_1_9::after {
+  content: "S";
 }

@@ -26,20 +26,26 @@
       <!-- place navbar here -->
     </header>
     <main class="row">
-      <div id="digitize" class="col-11 col-sm-9 col-md-7">
+      <div id="digitize" class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6">
         <h1>
           Rock Paper Scissors
           <div class="matrix-edition">
             <div class="sides"></div>
             <div class="subSides"></div>
-            <div class="text">Matrix Edition</div>
+            <div class="text">
+              <span class="matrixWord">Matrix</span>
+              <span class="editionWord d-none d-md-inline">Edition</span>
+            </div>
           </div>
         </h1>
-        <div class="play"></div>
-        <div id="digiContainer"></div>
-        <div id="subDigiContainer"></div>
+        <div class="playContainer">
+          <div class="play" onclick="digitize()">
+            <div class="arrow"></div>
+          </div>
+        </div>
+        <div id="digiContainer" class="d-none"></div>
+        <div id="subDigiContainer" class="d-none"></div>
       </div>
-      <div onclick="digitize()">Digitize</div>
     </main>
     <footer>
       <!-- place footer here -->
