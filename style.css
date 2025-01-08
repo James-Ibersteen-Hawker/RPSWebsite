@@ -4,7 +4,7 @@
 }
 
 body {
-  /* background: url(matrixcode2.gif); */
+  background: url(matrixcode2.gif);
   --border: green;
   overflow: clip;
 }
@@ -31,6 +31,9 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.off h1 {
+  background: none;
 }
 
 #digitize::before {

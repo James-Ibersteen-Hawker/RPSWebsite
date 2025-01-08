@@ -279,6 +279,8 @@ function digitize() {
       border: none !important;
       animation-delay:0s;
       animation-fill-mode: forwards;
+      color: transparent !important;
+      background-clip: 
   }
   .off::before {
         content: "";
