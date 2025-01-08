@@ -22,6 +22,7 @@ function digitize() {
       divArr[i].push(box);
       box.classList.add("digiBox");
       box.id = `box_${i}_${q}`;
+      box.classList.add(`box_${i}_${q}`);
       box.setAttribute(
         "style",
         `height: ${divMeasure}px; width: ${divMeasure}px;`
@@ -29,6 +30,27 @@ function digitize() {
       row.append(box);
     }
     container.append(row);
+  }
+  let subDivArr = [];
+  for (let i = 0; i < vert; i++) {
+    subDivArr.push(new Array());
+    let row = document.createElement("div");
+    row.classList.add("digiRow");
+    for (let q = 0; q < across; q++) {
+      let box = document.createElement("div");
+      subDivArr[i].push(box);
+      box.classList.add("digiBox");
+      box.id = `box_${i}_${q}_sub`;
+      box.classList.add(`box_${i}_${q}_sub`);
+      box.setAttribute(
+        "style",
+        `height: ${Math.round(divMeasure / 2)}px; width: ${Math.round(
+          divMeasure / 2
+        )}px; margin: ${Math.round(divMeasure / 3)}px;`
+      );
+      row.append(box);
+    }
+    subContainer.append(row);
   }
   let style = document.getElementsByTagName("STYLE")[0];
   for (let i = 0; i < divArr.length; i++) {
@@ -120,7 +142,7 @@ function digitize() {
       ${direcOpp.join("")}
         }
       }`;
-      let animClass = `#box_${i}_${q} {
+      let animClass = `.box_${i}_${q} {
       background: black;
       animation-name: box_${i}_${q};
       animation-duration: 1s;
@@ -221,7 +243,7 @@ function digitize() {
       ${direcOpp.join("")}
         }
       }`;
-      let animClass = `#box_${i}_${q}_sub {
+      let animClass = `.box_${i}_${q}_sub {
       background: black;
       animation-name: box_${i}_${q}_sub;
       animation-duration: 1s;
@@ -233,26 +255,7 @@ function digitize() {
       style.append(anim);
     }
   } //make pulse anims
-  let subDivArr = [];
-  for (let i = 0; i < vert; i++) {
-    subDivArr.push(new Array());
-    let row = document.createElement("div");
-    row.classList.add("digiRow");
-    for (let q = 0; q < across; q++) {
-      let box = document.createElement("div");
-      subDivArr[i].push(box);
-      box.classList.add("digiBox");
-      box.id = `box_${i}_${q}_sub`;
-      box.setAttribute(
-        "style",
-        `height: ${Math.round(divMeasure / 2)}px; width: ${Math.round(
-          divMeasure / 2
-        )}px; margin: ${Math.round(divMeasure / 3)}px;`
-      );
-      row.append(box);
-    }
-    subContainer.append(row);
-  }
+
   let scaleAnim = `@keyframes scaleAnim {
     0% {
       transform: translate(-50%, -50%) scale(1);
@@ -285,132 +288,136 @@ function digitize() {
       }    
   `;
   //magic number is 1.27
+  let subtract = 100 / 24;
   let fadeAnim = ` @keyframes fadeOff {
   0% {
   background: black;
   }
   20% {
-  background: green;
+  background: transparent;
   }    
   21% {
-  background: radial-gradient(green ${99 - (100 / 79) * 1}%, black ${
-    (100 % -(100 / 99)) * 1
-  });
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 24
+  }%, black 100%);
   }
   24% {
-  background: radial-gradient(green ${99 - (100 / 79) * 2}%, black ${
-    (100 % -(100 / 99)) * 2
-  });
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 23
+  }%, black 100%);
   }
   27% {
-  background: radial-gradient(green ${99 - (100 / 79) * 3}%, black ${
-    (100 % -(100 / 99)) * 3
-  });
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 22
+  }%, black 100%);
   }
   30% {
-  background: radial-gradient(green ${99 - (100 / 79) * 4}%, black ${
-    (100 % -(100 / 99)) * 4
-  });
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 21
+  }%, black 100%);
   }
   33% {
-  background: radial-gradient(green ${99 - (100 / 79) * 5}%, black ${
-    (100 % -(100 / 99)) * 5
-  });
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 20
+  }%, black 100%);
   }
   36% {
-  background: radial-gradient(green ${99 - (100 / 79) * 6}%, black ${
-    (100 % -(100 / 99)) * 6
-  });
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 19
+  }%, black 100%);
   }
   39% {
-  background: radial-gradient(green ${99 - (100 / 79) * 7}%, black ${
-    (100 % -(100 / 99)) * 7
-  });
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 18
+  }%, black 100%);
   }
   42% {
-  background: radial-gradient(green ${99 - (100 / 79) * 8}%, black ${
-    (100 % -(100 / 99)) * 8
-  });
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 17
+  }%, black 100%);
   }
   45% {
-  background: radial-gradient(green ${99 - (100 / 79) * 9}%, black ${
-    (100 % -(100 / 99)) * 9
-  });
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 16
+  }%, black 100%);
   }
   48% {
-  background: radial-gradient(green ${99 - (100 / 79) * 10}%, black ${
-    100 - (100 / 99) * 10
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 15
+  }%, black 100%);
   }
   51% {
-  background: radial-gradient(green ${99 - (100 / 79) * 11}%, black ${
-    100 - (100 / 99) * 11
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 14
+  }%, black 100%);
   }
   54% {
-  background: radial-gradient(green ${99 - (100 / 79) * 12}%, black ${
-    100 - (100 / 99) * 12
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 13
+  }%, black 100%);
   }
   57% {
-  background: radial-gradient(green ${99 - (100 / 79) * 13}%, black ${
-    100 - (100 / 99) * 13
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 12
+  }%, black 100%);
   }
   60% {
-  background: radial-gradient(green ${99 - (100 / 79) * 14}%, black ${
-    100 - (100 / 99) * 14
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 11
+  }%, black 100%);
   }
   63% {
-  background: radial-gradient(green ${99 - (100 / 79) * 15}%, black ${
-    100 - (100 / 99) * 15
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 10
+  }%, black 100%);
   }
   66% {
-  background: radial-gradient(green ${99 - (100 / 79) * 16}%, black ${
-    100 - (100 / 99) * 16
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 9
+  }%, black 100%);
   }
   69% {
-  background: radial-gradient(green ${99 - (100 / 79) * 17}%, black ${
-    100 - (100 / 99) * 17
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 8
+  }%, black 100%);
   }
   72% {
-  background: radial-gradient(green ${99 - (100 / 79) * 18}%, black ${
-    100 - (100 / 99) * 18
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 7
+  }%, black 100%);
   }
   75% {
-  background: radial-gradient(green ${99 - (100 / 79) * 19}%, black ${
-    100 - (100 / 99) * 19
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 6
+  }%, black 100%);
   }
   78% {
-  background: radial-gradient(green ${99 - (100 / 79) * 20}%, black ${
-    100 - (100 / 99) * 20
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 5
+  }%, black 100%);
   }
   91% {
-  background: radial-gradient(green ${99 - (100 / 79) * 21}%, black ${
-    100 - (100 / 99) * 21
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 4
+  }%, black 100%);
   }
   94% {
-  background: radial-gradient(green ${99 - (100 / 79) * 22}%, black ${
-    100 - (100 / 99) * 22
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 3
+  }%, black 100%);
   }
   97% {
-  background: radial-gradient(green ${99 - (100 / 79) * 23}%, black ${
-    100 - (100 / 99) * 23
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 2
+  }%, black 100%);
+  }
+  99% {
+  background: url("matrixcode2.gif"), radial-gradient(transparent ${
+    100 - subtract * 1
+  }%, black 100%);
   }
   100% {
-  background: radial-gradient(green ${99 - (100 / 79) * 24}%, black ${
-    100 - (100 / 99) * 24
-  }%);
+  background: url("matrixcode2.gif"), radial-gradient(transparent 100%, black 100%);
   }
   }
   `;
@@ -420,6 +427,7 @@ function digitize() {
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
+  background-size: contain;
   }`;
   base.classList.add("off");
   style.append(scaleClass);
@@ -427,10 +435,8 @@ function digitize() {
   style.append(fadeAnim);
   style.append(fadeAnimClass);
   let allBoxes = document.querySelectorAll("[id^='box']");
-  console.log(allBoxes);
   setTimeout(
     () => {
-      style.innerHTML = "";
       for (let i = 0; i < allBoxes.length; i++) {
         allBoxes[i].classList.add("fadeAnimClass");
       }
