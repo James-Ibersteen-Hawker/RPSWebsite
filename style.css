@@ -95,7 +95,6 @@ h1 {
   background: url(matrixcode2.gif);
   width: 100vw;
   height: 100vh;
-  background-size: auto 60%;
   position: absolute;
   z-index: 3;
 }

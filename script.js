@@ -272,15 +272,13 @@ function digitize() {
   }`;
   let scaleClass = `.off {
       animation-name: scaleAnim;
-      animation-duration: 2s;
+      animation-duration: 3s;
       animation-iteration-count: 1;
-      animation-timing-function: linear;
       background: transparent !important;
       border: none !important;
       animation-delay:0s;
       animation-fill-mode: forwards;
-      color: transparent !important;
-      background-clip: 
+      animation-timing-function: steps(10);
   }
   .off::before {
         content: "";
