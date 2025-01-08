@@ -260,6 +260,10 @@ function digitize() {
     0% {
       transform: translate(-50%, -50%) scale(1);
     }
+    10% {
+      transform: translate(-50%, -50%) scale(1);
+    
+    }
     100% {
       transform: translate(-50%, -50%) scale(${
         (Number(base.offsetHeight) / Number(window.innerHeight)) * 10
@@ -440,9 +444,32 @@ function digitize() {
       for (let i = 0; i < allBoxes.length; i++) {
         allBoxes[i].classList.add("fadeAnimClass");
       }
+      let fadeIn = document.getElementById("digitize_screen");
+      fadeIn.classList.add("fadeIn");
+      setTimeout(
+        () => {
+          for (let i = 0; i < allBoxes.length; i++) {
+            base.remove();
+          }
+        },
+        2000,
+        allBoxes,
+        base
+      );
+      setTimeout(
+        () => {
+          fadeIn.classList.remove("fadeIn");
+          setTimeout(() => {
+            window.location = window.location.href;
+          }, 1000);
+        },
+        3000,
+        fadeIn
+      );
     },
     3000,
     allBoxes,
-    style
+    style,
+    base
   );
 }
