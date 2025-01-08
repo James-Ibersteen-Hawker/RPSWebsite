@@ -260,10 +260,6 @@ function digitize() {
     0% {
       transform: translate(-50%, -50%) scale(1);
     }
-    10% {
-      transform: translate(-50%, -50%) scale(1);
-    
-    }
     100% {
       transform: translate(-50%, -50%) scale(${
         (Number(base.offsetHeight) / Number(window.innerHeight)) * 10
@@ -272,13 +268,13 @@ function digitize() {
   }`;
   let scaleClass = `.off {
       animation-name: scaleAnim;
-      animation-duration: 3s;
+      animation-duration: 5s;
       animation-iteration-count: 1;
       background: transparent !important;
       border: none !important;
       animation-delay:0s;
       animation-fill-mode: forwards;
-      animation-timing-function: steps(10);
+      animation-timing-function: steps(20);
   }
   .off::before {
         content: "";
@@ -467,7 +463,7 @@ function digitize() {
         fadeIn
       );
     },
-    3000,
+    2500,
     allBoxes,
     style,
     base
