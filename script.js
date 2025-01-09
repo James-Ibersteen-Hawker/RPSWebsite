@@ -3,6 +3,7 @@ function digitize() {
   let vert = 7;
   let base = document.getElementById("digitize");
   let container = document.getElementById("digiContainer");
+  let nextScreen = document.getElementById("container-2");
   container.classList.remove("d-none");
   let subContainer = document.getElementById("subDigiContainer");
   subContainer.classList.remove("d-none");
@@ -444,13 +445,14 @@ function digitize() {
       fadeIn.classList.add("fadeIn");
       setTimeout(
         () => {
-          for (let i = 0; i < allBoxes.length; i++) {
-            base.remove();
-          }
+          base.remove();
+          nextScreen.classList.remove("d-none");
+          nextScreen.classList.add("d-flex");
         },
         2000,
         allBoxes,
-        base
+        base,
+        nextScreen
       );
       setTimeout(
         () => {
@@ -463,6 +465,7 @@ function digitize() {
     2500,
     allBoxes,
     style,
-    base
+    base,
+    nextScreen
   );
 }
