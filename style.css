@@ -398,3 +398,12 @@ div[id^="box_1"]:not([id$="_sub"])::after {
 #box_1_9::after {
   content: "S";
 }
+.dripCode {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: blue;
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+.category {
+  width: calc(100% / 3);
+}
