@@ -438,7 +438,7 @@ function digitize() {
   setTimeout(
     () => {
       for (let i = 0; i < allBoxes.length; i++) {
-        allBoxes[i].classList.add("fadeAnimClass");
+        // allBoxes[i].classList.add("fadeAnimClass");
       }
       let fadeIn = document.getElementById("digitize_screen");
       fadeIn.classList.add("fadeIn");

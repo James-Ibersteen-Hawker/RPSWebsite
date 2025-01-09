@@ -59,6 +59,7 @@ h1::after {
   font-family: "Hogers", serif;
   background-clip: text;
   color: transparent;
+  width: 100%;
 }
 .word1 {
   content: "Matrix";
