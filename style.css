@@ -421,6 +421,9 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: 1s;
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
 }
 .secondPage {
   background: url(blackGrunge2.png);
@@ -433,7 +436,8 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5px !important;
+  padding: 0px !important;
+  padding-left: 15px !important;
 }
 
 .secondPage::before {
@@ -466,8 +470,9 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   margin: 0 !important;
 }
 
-#h21 {
+/* #h21 {
   position: absolute;
+  font-weight: 900;
   left: 50%;
   top: 17%;
   transform: translate(-50%, -50%);
@@ -477,19 +482,9 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   font-size: 60px;
   background: url(matrixcode2.gif);
   background-clip: text;
-  z-index: 10 !important;
-}
-
-#h21::before {
-  content: "Rock - Paper - Scissors";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  text-shadow: 0px 0px 5px white, 0px 0px 2px black, 0px 0px 2px black,
-    0px 0px 2px black;
-  z-index: -1 !important;
-}
+  filter: drop-shadow(0px 0px 3px white);
+  z-index: 2;
+} */
 
 #h22 {
   position: absolute;
@@ -501,4 +496,11 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   color: var(--border);
   z-index: 3;
   font-size: 40px;
+}
+
+.category:hover {
+  background: #008f1131;
+  transition: 1s;
+  border-right: 1px solid var(--border);
+  border-left: 1px solid var(--border);
 }
