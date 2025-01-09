@@ -401,7 +401,7 @@ div[id^="box_1"]:not([id$="_sub"])::after {
 .dripCode {
   width: 100%;
   aspect-ratio: 3/4;
-  background: blue;
+  background: url(matrixTransparent.gif);
   mask-image: linear-gradient(to bottom, black, transparent);
 }
 .category {
