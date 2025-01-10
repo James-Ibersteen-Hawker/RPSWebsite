@@ -146,6 +146,13 @@ h1::after {
   border-radius: 20px;
   transition: 1s;
 }
+
+.pulsing {
+  animation-name: scalePulse;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+}
 #digitize::before {
   content: "";
   border: 5px solid var(--border);
@@ -248,7 +255,7 @@ h1::after {
 }
 .play {
   cursor: pointer;
-  height: 150px;
+  height: 130px;
   aspect-ratio: 1/1;
   background: url(blackGrunge2.png);
   border-radius: 50%;
@@ -305,9 +312,9 @@ h1::after {
   top: 50%;
   left: 50%;
   transform: translate(-35%, -50%);
-  border-top: 40px solid transparent;
-  border-bottom: 40px solid transparent;
-  border-left: 70px solid var(--border);
+  border-top: 35px solid transparent;
+  border-bottom: 35px solid transparent;
+  border-left: 60px solid var(--border);
 }
 #box_4_4::after {
   content: " ";
@@ -429,6 +436,11 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   border-left: 1px solid transparent;
   cursor: pointer;
 }
+.category span {
+  padding-left: 10px;
+  padding-right: 10px;
+  hyphens: manual;
+}
 .secondPage {
   background: url(blackGrunge2.png);
   height: 90%;
@@ -509,6 +521,19 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 0px 3px white;
   font-family: "Courier New", Courier, monospace;
   font-weight: 900;
+}
+
+@keyframes scalePulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }

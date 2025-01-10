@@ -1,3 +1,5 @@
+"use strict";
+
 const tooltipTriggerList = document.querySelectorAll(
   '[data-bs-toggle="tooltip"]'
 );
@@ -9,6 +11,7 @@ function digitize() {
   let across = 10;
   let vert = 7;
   let base = document.getElementById("digitize");
+  base.classList.remove("pulsate");
   let container = document.getElementById("digiContainer");
   let nextScreen = document.getElementById("container-2");
   container.classList.remove("d-none");
@@ -476,3 +479,18 @@ function digitize() {
     nextScreen
   );
 }
+
+function frazzle(param) {
+  let base = document.querySelector(param);
+  let across = Math.floor(base.offsetWidth / 50);
+  let vert = Math.floor(base.offsetHeight / 50);
+  let divArr = [];
+  for (let i = 0; i < vert; i++) {
+    for (let q = 0; q < across; q++) {
+      
+    }
+  }
+}
+
+let compChoices = ["Agent Smith", "Agents", "Sentinels"];
+let playerChoices = ["Neo", "Morpheus", "Trinity"];

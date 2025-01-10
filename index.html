@@ -26,7 +26,10 @@
       <!-- place navbar here -->
     </header>
     <main class="row">
-      <div id="digitize" class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6">
+      <div
+        id="digitize"
+        class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6 pulsing"
+      >
         <h1>
           Rock Paper Scissors
           <div class="matrix-edition">
@@ -51,29 +54,30 @@
         <div
           class="toolTipIco"
           data-bs-toggle="tooltip"
-          data-bs-title="Information:&#013;Rock beats Scissors, Paper beats Rock, and Scissors beats Paper"
+          data-bs-placement="bottom"
+          data-bs-html="true"
         >
           i
         </div>
         <h2 id="h22">choose wisely</h2>
         <div class="row dripping">
-          <div
-            class="category col-4"
-            data-bs-toggle="tooltip"
-            data-bs-title="Rock"
-          >
+          <div class="category col-4">
             <div class="dripCodeUp"></div>
-            Rock
+            <span data-bs-toggle="tooltip" data-bs-title="Rock">Neo</span>
             <div class="dripCode"></div>
           </div>
           <div class="category col-4">
             <div class="dripCodeUp"></div>
-            Paper
+            <span data-bs-toggle="tooltip" data-bs-title="Paper"
+              >Morp&shy;heus</span
+            >
             <div class="dripCode"></div>
           </div>
           <div class="category col-4">
             <div class="dripCodeUp"></div>
-            Scissors
+            <span data-bs-toggle="tooltip" data-bs-title="Scissors"
+              >Trin&shy;ity</span
+            >
             <div class="dripCode"></div>
           </div>
         </div>
