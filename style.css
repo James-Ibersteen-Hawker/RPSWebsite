@@ -422,8 +422,12 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   flex-direction: column;
   justify-content: center;
   transition: 1s;
+  height: calc(100% - 20px);
+  position: relative;
+  top: 10px;
   border-right: 1px solid transparent;
   border-left: 1px solid transparent;
+  cursor: pointer;
 }
 .secondPage {
   background: url(blackGrunge2.png);
@@ -437,9 +441,8 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   flex-direction: column;
   justify-content: center;
   padding: 0px !important;
-  padding-left: 15px !important;
+  padding-left: 20px !important;
 }
-
 .secondPage::before {
   content: "";
   border: 5px solid var(--border);
@@ -459,7 +462,6 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   z-index: -1 !important;
   transition: 1s;
 }
-
 .dripping {
   height: 100%;
   width: 100%;
@@ -470,22 +472,6 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   margin: 0 !important;
 }
 
-/* #h21 {
-  position: absolute;
-  font-weight: 900;
-  left: 50%;
-  top: 17%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  text-align: center;
-  color: transparent;
-  font-size: 60px;
-  background: url(matrixcode2.gif);
-  background-clip: text;
-  filter: drop-shadow(0px 0px 3px white);
-  z-index: 2;
-} */
-
 #h22 {
   position: absolute;
   left: 50%;
@@ -493,9 +479,13 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   transform: translate(-50%, 50%);
   width: 100%;
   text-align: center;
-  color: var(--border);
+  color: transparent;
+  background: url(matrixcode2.gif);
+  background-clip: text;
   z-index: 3;
   font-size: 40px;
+  font-family: "Hogers", serif;
+  filter: drop-shadow(0px 0px 5px white);
 }
 
 .category:hover {
@@ -503,4 +493,22 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   transition: 1s;
   border-right: 1px solid var(--border);
   border-left: 1px solid var(--border);
+}
+
+.toolTipIco {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgb(37, 177, 56);
+  height: 20px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  color: black;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 900;
 }
