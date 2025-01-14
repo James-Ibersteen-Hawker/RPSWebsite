@@ -537,3 +537,27 @@ div[id^="box_1"]:not([id$="_sub"])::after {
     transform: translate(-50%, -50%) scale(1);
   }
 }
+
+#digitize_frazzle {
+  z-index: 2;
+  aspect-ratio: 6/4;
+  background: red;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 10 !important;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: 1s;
+}
+
+#digitize_frazzle .box {
+  background: blue;
+  border: 1px solid black;
+}
