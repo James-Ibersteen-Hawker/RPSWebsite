@@ -541,7 +541,7 @@ div[id^="box_1"]:not([id$="_sub"])::after {
 #digitize_frazzle {
   z-index: 2;
   aspect-ratio: 6/4;
-  background: red;
+  /* background: red; */
   background-size: 100% 100%;
   position: absolute;
   top: 50%;
@@ -557,7 +557,29 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   transition: 1s;
 }
 
+#digitize_frazzle .digiRow {
+  position: relative;
+  bottom: -15px;
+  right: -10px;
+}
+
 #digitize_frazzle .box {
-  background: blue;
-  border: 1px solid black;
+  background: url(blackGrunge2.png) !important;
+  position: relative;
+  z-index: 0;
+  height: 30px;
+  width: 30px;
+}
+
+#digitize_frazzle .digiRow .box:first-child {
+  border-left: 10px solid var(--border);
+}
+#digitize_frazzle .digiRow .box:last-child {
+  border-right: 10px solid var(--border);
+}
+#digitize_frazzle .digiRow:first-child .box {
+  border-top: 10px solid var(--border);
+}
+#digitize_frazzle .digiRow:last-child .box {
+  border-bottom: 10px solid var(--border);
 }

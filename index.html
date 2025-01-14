@@ -20,7 +20,7 @@
     <style></style>
   </head>
 
-  <body class="container-fluid" onload="frazzle('#digitize_frazzle')">
+  <body class="container-fluid">
     <div id="digitize_screen"></div>
     <header>
       <!-- place navbar here -->
@@ -29,8 +29,9 @@
       <div
         id="digitize_frazzle"
         class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6 pulsing"
+        onload="frazzle('#digitize_frazzle')"
       ></div>
-      <!-- <div
+      <div
         id="digitize"
         class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6 pulsing"
       >
@@ -51,7 +52,7 @@
         </div>
         <div id="digiContainer" class="d-none"></div>
         <div id="subDigiContainer" class="d-none"></div>
-      </div> -->
+      </div>
     </main>
     <main class="d-none row justify-content-center h-100" id="container-2">
       <div class="col-8 secondPage">

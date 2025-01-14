@@ -5,7 +5,6 @@ const tooltipTriggerList = document.querySelectorAll(
 const tooltipList = [...tooltipTriggerList].map(
   (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
 );
-
 function digitize() {
   let across = 10;
   let vert = 7;
@@ -478,20 +477,27 @@ function digitize() {
     nextScreen
   );
 }
+window.addEventListener("resize", frazzle("#digitize_frazzle"));
 
 function frazzle(param) {
   let base = document.querySelector(param);
-  let across = Math.floor(base.offsetWidth / 30);
-  let vert = Math.floor(base.offsetHeight / 30);
+  base.innerHTML = "";
+  let digitizeBase = document.getElementById("digitize");
+  base.setAttribute(
+    "style",
+    `height: ${digitizeBase.offsetHeight}px; width: ${digitizeBase.offsetWidth}px;`
+  );
+  let across = Math.ceil(base.offsetWidth / 30);
+  let vert = Math.ceil(base.offsetHeight / 30);
   let divArr = [];
   for (let i = 0; i < vert; i++) {
     divArr.push([]);
     let row = document.createElement("div");
-    row.classList.add("row");
+    row.classList.add("digiRow");
     for (let q = 0; q < across; q++) {
       let box = document.createElement("div");
       box.classList.add("box");
-      box.setAttribute("style", "height: 30px; width: 30px;");
+      box.classList.add(`frazzlebox_${i}_${q}`);
       divArr[i].push(box);
       row.append(box);
     }
@@ -541,7 +547,7 @@ function frazzle(param) {
         direcOpp[2] = "top: -30px;";
         direcOpp[3] = "bottom: 0px";
       }
-      let anim = `@keyframes box_${i}_${q} {
+      let anim = `@keyframes frazzlebox_${i}_${q} {
         0% {
       transform: scale(0.8);
       ${direc.join("")}
@@ -587,9 +593,9 @@ function frazzle(param) {
       ${direcOpp.join("")}
         }
       }`;
-      let animClass = `.box_${i}_${q} {
+      let animClass = `.frazzlebox_${i}_${q} {
       background: black;
-      animation-name: box_${i}_${q};
+      animation-name: frazzlebox_${i}_${q};
       animation-duration: 1s;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
