@@ -29,7 +29,6 @@
       <div
         id="digitize_frazzle"
         class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6 pulsing"
-        onload="frazzle('#digitize_frazzle')"
       ></div>
       <div
         id="digitize"
@@ -46,7 +45,7 @@
           </div>
         </h1>
         <div class="playContainer">
-          <div class="play" onclick="digitize()">
+          <div class="play" onclick="loadOut()" id="playButton">
             <div class="arrow"></div>
           </div>
         </div>
@@ -55,12 +54,13 @@
       </div>
     </main>
     <main class="d-none row justify-content-center h-100" id="container-2">
-      <div class="col-8 secondPage">
+      <div class="col-8 secondPage pulsing" id="secondScreen">
         <div
           class="toolTipIco"
           data-bs-toggle="tooltip"
           data-bs-placement="bottom"
           data-bs-html="true"
+          data-bs-title="Information:<br>Rock beats Scissors<br>Scissors beats Paper<br>Paper beats Rock"
         >
           i
         </div>
@@ -87,6 +87,7 @@
           </div>
         </div>
       </div>
+      <div id="digitize_frazzle_2" class="col-8 pulsing"></div>
     </main>
     <footer>
       <!-- place footer here -->

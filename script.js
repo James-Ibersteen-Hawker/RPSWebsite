@@ -5,6 +5,14 @@ const tooltipTriggerList = document.querySelectorAll(
 const tooltipList = [...tooltipTriggerList].map(
   (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
 );
+function loadOut() {
+  let digitizeFrazzle = document.getElementById("digitize_frazzle");
+  digitizeFrazzle.innerHTML = "";
+  digitizeFrazzle.remove();
+  setTimeout(() => {
+    digitize();
+  }, 10);
+}
 function digitize() {
   let across = 10;
   let vert = 7;
@@ -22,6 +30,8 @@ function digitize() {
       base.offsetWidth
     }px !important;`
   );
+  let button = document.getElementById("playButton");
+  button.setAttribute("style", "pointer-events: none;");
   let divArr = [];
   for (let i = 0; i < vert; i++) {
     divArr.push(new Array());
@@ -443,22 +453,20 @@ function digitize() {
   style.append(scaleAnim);
   style.append(fadeAnim);
   style.append(fadeAnimClass);
-  let allBoxes = document.querySelectorAll("[id^='box']");
   setTimeout(
     () => {
-      for (let i = 0; i < allBoxes.length; i++) {
-        // allBoxes[i].classList.add("fadeAnimClass");
-      }
       let fadeIn = document.getElementById("digitize_screen");
       fadeIn.classList.add("fadeIn");
       setTimeout(
         () => {
-          base.remove();
+          base.classList.add("d-none");
           nextScreen.classList.remove("d-none");
           nextScreen.classList.add("d-flex");
+          setTimeout(() => {
+            frazzleSecond();
+          }, 20);
         },
         2000,
-        allBoxes,
         base,
         nextScreen
       );
@@ -471,14 +479,13 @@ function digitize() {
       );
     },
     2500,
-    allBoxes,
-    style,
     base,
     nextScreen
   );
 }
-window.addEventListener("resize", frazzle("#digitize_frazzle"));
-
+window.onload = function startUp() {
+  frazzle("#digitize_frazzle");
+};
 function frazzle(param) {
   let base = document.querySelector(param);
   base.innerHTML = "";
@@ -606,6 +613,130 @@ function frazzle(param) {
     }
   } //make pulse anims
 }
+function frazzleSecond() {
+  let secondBase = document.querySelector("#digitize_frazzle_2");
+  secondBase.innerHTML = "";
+  let across = Math.ceil(secondBase.offsetWidth / 30);
+  let vert = Math.ceil(secondBase.offsetHeight / 30);
+  let divArr = [];
+  for (let i = 0; i < vert; i++) {
+    divArr.push([]);
+    let row = document.createElement("div");
+    row.classList.add("digiRow");
+    for (let q = 0; q < across; q++) {
+      let box = document.createElement("div");
+      box.classList.add("box");
+      box.classList.add(`frazzlebox2_${i}_${q}`);
+      divArr[i].push(box);
+      row.append(box);
+    }
+    secondBase.append(row);
+  }
+  alert(secondBase.innerHTML);
+  let style = document.getElementsByTagName("STYLE")[0];
+  for (let i = 0; i < vert; i++) {
+    for (let q = 0; q < across; q++) {
+      let randomInt = Math.random() * 1.2;
+      let direcInt = Math.round(Math.random() * 10);
+      let direc = [];
+      let direcOpp = [];
+      if (direcInt < 3) {
+        direc[0] = "right: -30px;";
+        direc[1] = "left: 0px;";
+        direc[2] = "top: -30px;";
+        direc[3] = "bottom: 0px";
+        direcOpp[0] = "left: -30px;";
+        direcOpp[1] = "right: 0px;";
+        direcOpp[2] = "bottom: -30px;";
+        direcOpp[3] = "top: 0px";
+      } else if ((direcInt >= 3) & (direcInt < 5)) {
+        direc[0] = "left: -30px;";
+        direc[1] = "right: 0px;";
+        direc[2] = "top: -30px;";
+        direc[3] = "bottom: 0px";
+        direcOpp[0] = "right: -30px;";
+        direcOpp[1] = "left: 0px;";
+        direcOpp[2] = "botttom: -30px;";
+        direcOpp[3] = "top: 0px";
+      } else if (direcInt >= 5 && direcInt < 8) {
+        direc[0] = "right: -30px;";
+        direc[1] = "left: 0px;";
+        direc[2] = "botttom: -30px;";
+        direc[3] = "top: 0px";
+        direcOpp[0] = "left: -30px;";
+        direcOpp[1] = "right: 0px;";
+        direcOpp[2] = "top: -30px;";
+        direcOpp[3] = "bottom: 0px";
+      } else if (direcInt >= 8) {
+        direc[0] = "left: -30px;";
+        direc[1] = "right: 0px;";
+        direc[2] = "bottom: -30px;";
+        direc[3] = "top: 0px";
+        direcOpp[0] = "right: -30px;";
+        direcOpp[1] = "left: 0px;";
+        direcOpp[2] = "top: -30px;";
+        direcOpp[3] = "bottom: 0px";
+      }
+      let anim = `@keyframes frazzlebox2_${i}_${q} {
+        0% {
+      transform: scale(0.8);
+      ${direc.join("")}
+        }
+      19.99999% {
+      transform: scale(0.8);
+      ${direc.join("")}
+      }
+        20% {
+      transform: scale(0.4);
+      ${direcOpp.join("")}
+        }
+      39.99999% {
+      transform: scale(0.4);
+      ${direcOpp.join("")}
+      }
+        40% {
+      transform: scale(1.2);
+      ${direc.join("")}
+        }
+      59.99999% {
+      transform: scale(1.2);
+      ${direc.join("")}
+      }
+        60% {
+      transform: scale(0.7);
+      ${direcOpp.join("")}
+        }
+      79.99999% {
+      transform: scale(0.7);
+      ${direcOpp.join("")}
+      }
+        80% {
+      transform: scale(0.1);
+      ${direc.join("")}
+        }
+      99.99999% {
+      transform: scale(0.1);
+      ${direc.join("")}
+      }
+        100% {
+      transform: scale(0.5);
+      ${direcOpp.join("")}
+        }
+      }`;
+      let animClass = `.frazzlebox2_${i}_${q} {
+      animation-name: frazzlebox2_${i}_${q};
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-delay: ${randomInt}s;
+      }`;
+      style.append(animClass);
+      style.append(anim);
+    }
+  } //make pulse anims
+}
+
+
 
 let compChoices = ["Agent Smith", "Agents", "Sentinels"];
 let playerChoices = ["Neo", "Morpheus", "Trinity"];

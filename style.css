@@ -146,7 +146,6 @@ h1::after {
   border-radius: 20px;
   transition: 1s;
 }
-
 .pulsing {
   animation-name: scalePulse;
   animation-iteration-count: infinite;
@@ -478,12 +477,10 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   height: 100%;
   width: 100%;
 }
-
 .col-4 {
   padding: 0 !important;
   margin: 0 !important;
 }
-
 #h22 {
   position: absolute;
   left: 50%;
@@ -499,14 +496,12 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   font-family: "Hogers", serif;
   filter: drop-shadow(0px 0px 5px white);
 }
-
 .category:hover {
   background: #008f1131;
   transition: 1s;
   border-right: 1px solid var(--border);
   border-left: 1px solid var(--border);
 }
-
 .toolTipIco {
   cursor: pointer;
   position: absolute;
@@ -525,7 +520,6 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   font-family: "Courier New", Courier, monospace;
   font-weight: 900;
 }
-
 @keyframes scalePulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
@@ -537,7 +531,6 @@ div[id^="box_1"]:not([id$="_sub"])::after {
     transform: translate(-50%, -50%) scale(1);
   }
 }
-
 #digitize_frazzle {
   z-index: 2;
   aspect-ratio: 6/4;
@@ -556,21 +549,18 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   border-radius: 20px;
   transition: 1s;
 }
-
 #digitize_frazzle .digiRow {
   position: relative;
   bottom: -15px;
   right: -10px;
 }
-
-#digitize_frazzle .box {
+.box {
   background: url(blackGrunge2.png) !important;
   position: relative;
   z-index: 0;
   height: 30px;
   width: 30px;
 }
-
 #digitize_frazzle .digiRow .box:first-child {
   border-left: 10px solid var(--border);
 }
@@ -582,4 +572,49 @@ div[id^="box_1"]:not([id$="_sub"])::after {
 }
 #digitize_frazzle .digiRow:last-child .box {
   border-bottom: 10px solid var(--border);
+}
+#digitize_frazzle_2 .digiRow {
+  position: relative;
+  bottom: -15px;
+  right: -10px;
+}
+#digitize_frazzle_2 .digiRow .box:first-child {
+  border-left: 10px solid var(--border);
+}
+#digitize_frazzle_2 .digiRow .box:last-child {
+  border-right: 10px solid var(--border);
+}
+#digitize_frazzle_2 .digiRow:first-child .box {
+  border-top: 10px solid var(--border);
+}
+#digitize_frazzle_2 .digiRow:last-child .box {
+  border-bottom: 10px solid var(--border);
+}
+.loadFadeOut {
+  animation-name: fadeOutLoad;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}
+@keyframes fadeOutLoad {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+#digitize_frazzle_2 {
+  background: red;
+  height: 90%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#digitize_frazzle_2 .box {
+  background: blue !important;
+  border: 1px solid black !important;
 }
