@@ -1,4 +1,5 @@
 "use strict";
+let secondScreenYes = false;
 const tooltipTriggerList = document.querySelectorAll(
   '[data-bs-toggle="tooltip"]'
 );
@@ -360,6 +361,7 @@ function digitize() {
 window.onload = function startUp() {
   frazzle("#digitize_frazzle");
 };
+
 function frazzle(param) {
   let base = document.querySelector(param);
   base.innerHTML = "";
@@ -490,6 +492,7 @@ function frazzle(param) {
   } //make pulse anims
 }
 function frazzleSecond() {
+  secondScreenYes = true;
   let secondBase = document.querySelector("#digitize_frazzle_2");
   secondBase.innerHTML = "";
   let across = Math.ceil(secondBase.offsetWidth / 30);
@@ -612,6 +615,14 @@ function frazzleSecond() {
     }
   } //make pulse anims
 }
+
+window.onresize = function resized() {
+  if (secondScreenYes == false) {
+    frazzle();
+  } else if (secondScreenYes == true) {
+    frazzleSecond();
+  }
+};
 
 let compChoices = ["Agent Smith", "Agents", "Sentinels"];
 let playerChoices = ["Neo", "Morpheus", "Trinity"];
