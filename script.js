@@ -9,9 +9,7 @@ function loadOut() {
   let digitizeFrazzle = document.getElementById("digitize_frazzle");
   digitizeFrazzle.innerHTML = "";
   digitizeFrazzle.remove();
-  setTimeout(() => {
-    digitize();
-  }, 10);
+  digitize();
 }
 function digitize() {
   let across = 10;
@@ -389,48 +387,49 @@ function frazzle(param) {
   let style = document.getElementsByTagName("STYLE")[0];
   for (let i = 0; i < vert; i++) {
     for (let q = 0; q < across; q++) {
-      let randomInt = Math.random() * 1.2;
-      let direcInt = Math.round(Math.random() * 10);
-      let direc = [];
-      let direcOpp = [];
-      if (direcInt < 3) {
-        direc[0] = "right: -30px;";
-        direc[1] = "left: 0px;";
-        direc[2] = "top: -30px;";
-        direc[3] = "bottom: 0px";
-        direcOpp[0] = "left: -30px;";
-        direcOpp[1] = "right: 0px;";
-        direcOpp[2] = "bottom: -30px;";
-        direcOpp[3] = "top: 0px";
-      } else if ((direcInt >= 3) & (direcInt < 5)) {
-        direc[0] = "left: -30px;";
-        direc[1] = "right: 0px;";
-        direc[2] = "top: -30px;";
-        direc[3] = "bottom: 0px";
-        direcOpp[0] = "right: -30px;";
-        direcOpp[1] = "left: 0px;";
-        direcOpp[2] = "botttom: -30px;";
-        direcOpp[3] = "top: 0px";
-      } else if (direcInt >= 5 && direcInt < 8) {
-        direc[0] = "right: -30px;";
-        direc[1] = "left: 0px;";
-        direc[2] = "botttom: -30px;";
-        direc[3] = "top: 0px";
-        direcOpp[0] = "left: -30px;";
-        direcOpp[1] = "right: 0px;";
-        direcOpp[2] = "top: -30px;";
-        direcOpp[3] = "bottom: 0px";
-      } else if (direcInt >= 8) {
-        direc[0] = "left: -30px;";
-        direc[1] = "right: 0px;";
-        direc[2] = "bottom: -30px;";
-        direc[3] = "top: 0px";
-        direcOpp[0] = "right: -30px;";
-        direcOpp[1] = "left: 0px;";
-        direcOpp[2] = "top: -30px;";
-        direcOpp[3] = "bottom: 0px";
-      }
-      let anim = `@keyframes frazzlebox_${i}_${q} {
+      if (i == 0 || i == vert - 1 || q == 0 || q == across - 1) {
+        let randomInt = Math.random() * 1.2;
+        let direcInt = Math.round(Math.random() * 10);
+        let direc = [];
+        let direcOpp = [];
+        if (direcInt < 3) {
+          direc[0] = "right: -30px;";
+          direc[1] = "left: 0px;";
+          direc[2] = "top: -30px;";
+          direc[3] = "bottom: 0px";
+          direcOpp[0] = "left: -30px;";
+          direcOpp[1] = "right: 0px;";
+          direcOpp[2] = "bottom: -30px;";
+          direcOpp[3] = "top: 0px";
+        } else if ((direcInt >= 3) & (direcInt < 5)) {
+          direc[0] = "left: -30px;";
+          direc[1] = "right: 0px;";
+          direc[2] = "top: -30px;";
+          direc[3] = "bottom: 0px";
+          direcOpp[0] = "right: -30px;";
+          direcOpp[1] = "left: 0px;";
+          direcOpp[2] = "botttom: -30px;";
+          direcOpp[3] = "top: 0px";
+        } else if (direcInt >= 5 && direcInt < 8) {
+          direc[0] = "right: -30px;";
+          direc[1] = "left: 0px;";
+          direc[2] = "botttom: -30px;";
+          direc[3] = "top: 0px";
+          direcOpp[0] = "left: -30px;";
+          direcOpp[1] = "right: 0px;";
+          direcOpp[2] = "top: -30px;";
+          direcOpp[3] = "bottom: 0px";
+        } else if (direcInt >= 8) {
+          direc[0] = "left: -30px;";
+          direc[1] = "right: 0px;";
+          direc[2] = "bottom: -30px;";
+          direc[3] = "top: 0px";
+          direcOpp[0] = "right: -30px;";
+          direcOpp[1] = "left: 0px;";
+          direcOpp[2] = "top: -30px;";
+          direcOpp[3] = "bottom: 0px";
+        }
+        let anim = `@keyframes frazzlebox_${i}_${q} {
         0% {
       transform: scale(0.8);
       ${direc.join("")}
@@ -476,7 +475,7 @@ function frazzle(param) {
       ${direcOpp.join("")}
         }
       }`;
-      let animClass = `.frazzlebox_${i}_${q} {
+        let animClass = `.frazzlebox_${i}_${q} {
       background: black;
       animation-name: frazzlebox_${i}_${q};
       animation-duration: 1s;
@@ -484,8 +483,9 @@ function frazzle(param) {
       animation-timing-function: linear;
       animation-delay: ${randomInt}s;
       }`;
-      style.append(animClass);
-      style.append(anim);
+        style.append(animClass);
+        style.append(anim);
+      }
     }
   } //make pulse anims
 }
@@ -508,52 +508,52 @@ function frazzleSecond() {
     }
     secondBase.append(row);
   }
-  alert(secondBase.innerHTML);
   let style = document.getElementsByTagName("STYLE")[0];
   for (let i = 0; i < vert; i++) {
     for (let q = 0; q < across; q++) {
-      let randomInt = Math.random() * 1.2;
-      let direcInt = Math.round(Math.random() * 10);
-      let direc = [];
-      let direcOpp = [];
-      if (direcInt < 3) {
-        direc[0] = "right: -30px;";
-        direc[1] = "left: 0px;";
-        direc[2] = "top: -30px;";
-        direc[3] = "bottom: 0px";
-        direcOpp[0] = "left: -30px;";
-        direcOpp[1] = "right: 0px;";
-        direcOpp[2] = "bottom: -30px;";
-        direcOpp[3] = "top: 0px";
-      } else if ((direcInt >= 3) & (direcInt < 5)) {
-        direc[0] = "left: -30px;";
-        direc[1] = "right: 0px;";
-        direc[2] = "top: -30px;";
-        direc[3] = "bottom: 0px";
-        direcOpp[0] = "right: -30px;";
-        direcOpp[1] = "left: 0px;";
-        direcOpp[2] = "botttom: -30px;";
-        direcOpp[3] = "top: 0px";
-      } else if (direcInt >= 5 && direcInt < 8) {
-        direc[0] = "right: -30px;";
-        direc[1] = "left: 0px;";
-        direc[2] = "botttom: -30px;";
-        direc[3] = "top: 0px";
-        direcOpp[0] = "left: -30px;";
-        direcOpp[1] = "right: 0px;";
-        direcOpp[2] = "top: -30px;";
-        direcOpp[3] = "bottom: 0px";
-      } else if (direcInt >= 8) {
-        direc[0] = "left: -30px;";
-        direc[1] = "right: 0px;";
-        direc[2] = "bottom: -30px;";
-        direc[3] = "top: 0px";
-        direcOpp[0] = "right: -30px;";
-        direcOpp[1] = "left: 0px;";
-        direcOpp[2] = "top: -30px;";
-        direcOpp[3] = "bottom: 0px";
-      }
-      let anim = `@keyframes frazzlebox2_${i}_${q} {
+      if (i == 0 || i == vert - 1 || q == 0 || q == across - 1) {
+        let randomInt = Math.random() * 1.2;
+        let direcInt = Math.round(Math.random() * 10);
+        let direc = [];
+        let direcOpp = [];
+        if (direcInt < 3) {
+          direc[0] = "right: -30px;";
+          direc[1] = "left: 0px;";
+          direc[2] = "top: -30px;";
+          direc[3] = "bottom: 0px";
+          direcOpp[0] = "left: -30px;";
+          direcOpp[1] = "right: 0px;";
+          direcOpp[2] = "bottom: -30px;";
+          direcOpp[3] = "top: 0px";
+        } else if ((direcInt >= 3) & (direcInt < 5)) {
+          direc[0] = "left: -30px;";
+          direc[1] = "right: 0px;";
+          direc[2] = "top: -30px;";
+          direc[3] = "bottom: 0px";
+          direcOpp[0] = "right: -30px;";
+          direcOpp[1] = "left: 0px;";
+          direcOpp[2] = "botttom: -30px;";
+          direcOpp[3] = "top: 0px";
+        } else if (direcInt >= 5 && direcInt < 8) {
+          direc[0] = "right: -30px;";
+          direc[1] = "left: 0px;";
+          direc[2] = "botttom: -30px;";
+          direc[3] = "top: 0px";
+          direcOpp[0] = "left: -30px;";
+          direcOpp[1] = "right: 0px;";
+          direcOpp[2] = "top: -30px;";
+          direcOpp[3] = "bottom: 0px";
+        } else if (direcInt >= 8) {
+          direc[0] = "left: -30px;";
+          direc[1] = "right: 0px;";
+          direc[2] = "bottom: -30px;";
+          direc[3] = "top: 0px";
+          direcOpp[0] = "right: -30px;";
+          direcOpp[1] = "left: 0px;";
+          direcOpp[2] = "top: -30px;";
+          direcOpp[3] = "bottom: 0px";
+        }
+        let anim = `@keyframes frazzlebox2_${i}_${q} {
         0% {
       transform: scale(0.8);
       ${direc.join("")}
@@ -599,15 +599,16 @@ function frazzleSecond() {
       ${direcOpp.join("")}
         }
       }`;
-      let animClass = `.frazzlebox2_${i}_${q} {
+        let animClass = `.frazzlebox2_${i}_${q} {
       animation-name: frazzlebox2_${i}_${q};
       animation-duration: 1s;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
       animation-delay: ${randomInt}s;
       }`;
-      style.append(animClass);
-      style.append(anim);
+        style.append(animClass);
+        style.append(anim);
+      }
     }
   } //make pulse anims
 }
