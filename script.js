@@ -21,8 +21,6 @@ function digitize() {
   let container = document.getElementById("digiContainer");
   let nextScreen = document.getElementById("container-2");
   container.classList.remove("d-none");
-  let subContainer = document.getElementById("subDigiContainer");
-  subContainer.classList.remove("d-none");
   let divMeasure = Math.floor(base.offsetWidth / across);
   base.setAttribute(
     "style",
@@ -50,27 +48,6 @@ function digitize() {
       row.append(box);
     }
     container.append(row);
-  }
-  let subDivArr = [];
-  for (let i = 0; i < vert; i++) {
-    subDivArr.push(new Array());
-    let row = document.createElement("div");
-    row.classList.add("digiRow");
-    for (let q = 0; q < across; q++) {
-      let box = document.createElement("div");
-      subDivArr[i].push(box);
-      box.classList.add("digiBox");
-      box.id = `box_${i}_${q}_sub`;
-      box.classList.add(`box_${i}_${q}_sub`);
-      box.setAttribute(
-        "style",
-        `height: ${Math.round(divMeasure / 2)}px; width: ${Math.round(
-          divMeasure / 2
-        )}px; margin: ${Math.round(divMeasure / 3)}px;`
-      );
-      row.append(box);
-    }
-    subContainer.append(row);
   }
   let style = document.getElementsByTagName("STYLE")[0];
   for (let i = 0; i < divArr.length; i++) {
@@ -165,107 +142,6 @@ function digitize() {
       let animClass = `.box_${i}_${q} {
       background: black;
       animation-name: box_${i}_${q};
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      animation-delay: ${randomInt}s;
-      }`;
-      style.append(animClass);
-      style.append(anim);
-    }
-  } //make pulse anims
-  for (let i = 0; i < divArr.length; i++) {
-    for (let q = 0; q < divArr[i].length; q++) {
-      let randomInt = Math.random() * 1.2;
-      let direcInt = Math.round(Math.random() * 10);
-      let direc = [];
-      let direcOpp = [];
-      if (direcInt < 3) {
-        direc[0] = "right: -30px;";
-        direc[1] = "left: 0px;";
-        direc[2] = "top: -30px;";
-        direc[3] = "bottom: 0px";
-        direcOpp[0] = "left: -30px;";
-        direcOpp[1] = "right: 0px;";
-        direcOpp[2] = "bottom: -30px;";
-        direcOpp[3] = "top: 0px";
-      } else if ((direcInt >= 3) & (direcInt < 5)) {
-        direc[0] = "left: -30px;";
-        direc[1] = "right: 0px;";
-        direc[2] = "top: -30px;";
-        direc[3] = "bottom: 0px";
-        direcOpp[0] = "right: -30px;";
-        direcOpp[1] = "left: 0px;";
-        direcOpp[2] = "botttom: -30px;";
-        direcOpp[3] = "top: 0px";
-      } else if (direcInt >= 5 && direcInt < 8) {
-        direc[0] = "right: -30px;";
-        direc[1] = "left: 0px;";
-        direc[2] = "botttom: -30px;";
-        direc[3] = "top: 0px";
-        direcOpp[0] = "left: -30px;";
-        direcOpp[1] = "right: 0px;";
-        direcOpp[2] = "top: -30px;";
-        direcOpp[3] = "bottom: 0px";
-      } else if (direcInt >= 8) {
-        direc[0] = "left: -30px;";
-        direc[1] = "right: 0px;";
-        direc[2] = "bottom: -30px;";
-        direc[3] = "top: 0px";
-        direcOpp[0] = "right: -30px;";
-        direcOpp[1] = "left: 0px;";
-        direcOpp[2] = "top: -30px;";
-        direcOpp[3] = "bottom: 0px";
-      }
-      let anim = `@keyframes box_${i}_${q}_sub {
-        0% {
-      transform: scale(0.8);
-      ${direc.join("")}
-        }
-      19.99999% {
-      transform: scale(0.8);
-      ${direc.join("")}
-      }
-        20% {
-      transform: scale(0.4);
-      ${direcOpp.join("")}
-        }
-      39.99999% {
-      transform: scale(0.4);
-      ${direcOpp.join("")}
-      }
-        40% {
-      transform: scale(1.2);
-      ${direc.join("")}
-        }
-      59.99999% {
-      transform: scale(1.2);
-      ${direc.join("")}
-      }
-        60% {
-      transform: scale(0.7);
-      ${direcOpp.join("")}
-        }
-      79.99999% {
-      transform: scale(0.7);
-      ${direcOpp.join("")}
-      }
-        80% {
-      transform: scale(0.1);
-      ${direc.join("")}
-        }
-      99.99999% {
-      transform: scale(0.1);
-      ${direc.join("")}
-      }
-        100% {
-      transform: scale(0.5);
-      ${direcOpp.join("")}
-        }
-      }`;
-      let animClass = `.box_${i}_${q}_sub {
-      background: black;
-      animation-name: box_${i}_${q}_sub;
       animation-duration: 1s;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
@@ -735,8 +611,6 @@ function frazzleSecond() {
     }
   } //make pulse anims
 }
-
-
 
 let compChoices = ["Agent Smith", "Agents", "Sentinels"];
 let playerChoices = ["Neo", "Morpheus", "Trinity"];
