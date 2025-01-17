@@ -13,6 +13,7 @@ function loadOut() {
   digitize();
 }
 function digitize() {
+  secondScreenYes = true;
   let across = 10;
   let vert = 7;
   let base = document.getElementById("digitize");
@@ -492,7 +493,6 @@ function frazzle(param) {
   } //make pulse anims
 }
 function frazzleSecond() {
-  secondScreenYes = true;
   let secondBase = document.querySelector("#digitize_frazzle_2");
   secondBase.innerHTML = "";
   let across = Math.ceil(secondBase.offsetWidth / 30);
@@ -618,7 +618,7 @@ function frazzleSecond() {
 
 window.onresize = function resized() {
   if (secondScreenYes == false) {
-    frazzle();
+    frazzle("#digitize_frazzle");
   } else if (secondScreenYes == true) {
     frazzleSecond();
   }
@@ -626,3 +626,16 @@ window.onresize = function resized() {
 
 let compChoices = ["Agent Smith", "Agents", "Sentinels"];
 let playerChoices = ["Neo", "Morpheus", "Trinity"];
+
+/*
+counter = 0;
+
+playgame => {
+ if (counter <= #rounds) {
+ rounds++;
+ run the game
+ } else {
+  return;
+}
+}
+*/
