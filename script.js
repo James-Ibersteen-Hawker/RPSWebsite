@@ -697,6 +697,7 @@ let winOBJ = {
   },
 };
 function playGame(arg) {
+  countScreen();
   let compChoice = compChoices[Math.floor(Math.random() * 3)];
   let slot = `${arg.charAt(0).toLowerCase()}v${compChoice
     .charAt(0)
@@ -708,12 +709,17 @@ function playGame(arg) {
   }
 }
 let count = 3;
-function countDown() {
+function countDown(elem) {
   if (count > 0) {
-    console.log(count);
+    elem.textContent = count;
     count--;
     setTimeout(() => {
       countDown();
     }, 1000);
-  }
+  } else document.querySelector("#loader").classList.add("d-none");
+}
+function countScreen() {
+  let loader = document.querySelector("#loader");
+  loader.classList.remove("d-none");
+  countDown(document.querySelector("#countdown"));
 }
