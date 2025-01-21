@@ -23,7 +23,7 @@ let scores = {
       this.userScore++;
       this.computerScore++;
     }
-    if (round <= maxRound) this.print();
+    if (round < maxRound) this.print();
     else {
       this.print();
       this.final();
@@ -653,43 +653,67 @@ window.onresize = function resized() {
     frazzleSecond();
   }
 };
-
 let compChoices = ["rock", "scissors", "paper"];
 let winOBJ = {
   tie: function () {
     scores.incr(0);
     return "It's a tie!";
   },
-  rvp: function () {
-    scores.incr(2);
-    return "The Matrix wins!";
+  rvp: {
+    run: function () {
+      scores.incr(2);
+      return "The Matrix wins!";
+    },
   },
-  rvs: function () {
-    scores.incr(1);
-    return `${username} wins!`;
+  rvs: {
+    run: function () {
+      scores.incr(1);
+      return `${username} wins!`;
+    },
   },
-  pvr: function () {
-    scores.incr(1);
-    return `${username} wins!`;
+  pvr: {
+    run: function () {
+      scores.incr(1);
+      return `${username} wins!`;
+    },
   },
-  pvs: function () {
-    scores.incr(2);
-    return "The Matrix wins!";
+  pvs: {
+    run: function () {
+      scores.incr(2);
+      return "The Matrix wins!";
+    },
   },
-  svr: function () {
-    scores.incr(2);
-    return "The Matrix wins!";
+  svr: {
+    run: function () {
+      scores.incr(2);
+      return "The Matrix wins!";
+    },
   },
-  svp: function () {
-    scores.incr(1);
-    return `${username} wins!`;
+  svp: {
+    run: function () {
+      scores.incr(1);
+      return `${username} wins!`;
+    },
   },
 };
 function playGame(arg) {
   let compChoice = compChoices[Math.floor(Math.random() * 3)];
   let slot = `${arg.charAt(0).toLowerCase()}v${compChoice
     .charAt(0)
-    .toLowerCase()}()`;
-  if (slot.charAt(0) == slot.charAt(slot.length - 3)) alert(winOBJ[tie]);
-  else alert(`${winOBJ.slot} ${compChoice}`);
+    .toLowerCase()}`;
+  if (slot.charAt(0) == slot.charAt(slot.length - 1)) alert(winOBJ.tie());
+  else {
+    round++;
+    alert(`${winOBJ[slot].run()} ${compChoice}`);
+  }
+}
+let count = 3;
+function countDown() {
+  if (count > 0) {
+    console.log(count);
+    count--;
+    setTimeout(() => {
+      countDown();
+    }, 1000);
+  }
 }
