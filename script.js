@@ -1,4 +1,35 @@
 "use strict";
+let round = 0;
+let maxRound = 3;
+let scores = {
+  userScore: 0,
+  computerScore: 0,
+  final: function () {
+    let result = this.userScore - this.computerScore;
+    if (result > 0) console.log(`${username} wins!`);
+    else if (result < 0) console.log("Computer wins!");
+    else console.log("It's a tie!");
+  },
+  print: function () {
+    // let userElem;
+    // let compElem;
+    // userElem.textContent = this.userScore;
+    // compElem.textContent = this.computerScore;
+  },
+  incr: function (arg) {
+    if (arg == 1) this.userScore++;
+    else if (arg == 2) this.computerScore++;
+    else if (arg == 0) {
+      this.userScore++;
+      this.computerScore++;
+    }
+    if (round <= maxRound) this.print();
+    else {
+      this.print();
+      this.final();
+    }
+  },
+};
 let secondScreenYes = false;
 let username = "guest";
 const tooltipTriggerList = document.querySelectorAll(
@@ -625,21 +656,40 @@ window.onresize = function resized() {
 
 let compChoices = ["rock", "scissors", "paper"];
 let winOBJ = {
-  rvr: "It's a tie!",
-  rvp: `Computer wins!`,
-  rvs: `${username} wins!`,
-  pvr: `${username} wins!`,
-  pvp: "It's a tie!",
-  pvs: `Computer wins!`,
-  svr: `Computer wins!`,
-  svp: `${username} wins!`,
-  svs: "It's a tie!",
+  tie: function () {
+    scores.incr(0);
+    return "It's a tie!";
+  },
+  rvp: function () {
+    scores.incr(2);
+    return "The Matrix wins!";
+  },
+  rvs: function () {
+    scores.incr(1);
+    return `${username} wins!`;
+  },
+  pvr: function () {
+    scores.incr(1);
+    return `${username} wins!`;
+  },
+  pvs: function () {
+    scores.incr(2);
+    return "The Matrix wins!";
+  },
+  svr: function () {
+    scores.incr(2);
+    return "The Matrix wins!";
+  },
+  svp: function () {
+    scores.incr(1);
+    return `${username} wins!`;
+  },
 };
 function playGame(arg) {
   let compChoice = compChoices[Math.floor(Math.random() * 3)];
   let slot = `${arg.charAt(0).toLowerCase()}v${compChoice
     .charAt(0)
-    .toLowerCase()}`;
-  console.log(winOBJ[slot]);
-  alert(`${winOBJ[slot]} ${compChoice}`);
+    .toLowerCase()}()`;
+  if (slot.charAt(0) == slot.charAt(slot.length - 3)) alert(winOBJ[tie]);
+  else alert(`${winOBJ.slot} ${compChoice}`);
 }
