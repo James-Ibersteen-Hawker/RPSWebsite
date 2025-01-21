@@ -1,5 +1,6 @@
 "use strict";
 let secondScreenYes = false;
+let username = "guest";
 const tooltipTriggerList = document.querySelectorAll(
   '[data-bs-toggle="tooltip"]'
 );
@@ -362,7 +363,6 @@ function digitize() {
 window.onload = function startUp() {
   frazzle("#digitize_frazzle");
 };
-
 function frazzle(param) {
   let base = document.querySelector(param);
   base.innerHTML = "";
@@ -615,7 +615,6 @@ function frazzleSecond() {
     }
   } //make pulse anims
 }
-
 window.onresize = function resized() {
   if (secondScreenYes == false) {
     frazzle("#digitize_frazzle");
@@ -624,18 +623,23 @@ window.onresize = function resized() {
   }
 };
 
-let compChoices = ["Agent Smith", "Agents", "Sentinels"];
-let playerChoices = ["Neo", "Morpheus", "Trinity"];
-
-/*
-counter = 0;
-
-playgame => {
- if (counter <= #rounds) {
- rounds++;
- run the game
- } else {
-  return;
+let compChoices = ["rock", "scissors", "paper"];
+let winOBJ = {
+  rvr: "It's a tie!",
+  rvp: `Computer wins!`,
+  rvs: `${username} wins!`,
+  pvr: `${username} wins!`,
+  pvp: "It's a tie!",
+  pvs: `Computer wins!`,
+  svr: `Computer wins!`,
+  svp: `${username} wins!`,
+  svs: "It's a tie!",
+};
+function playGame(arg) {
+  let compChoice = compChoices[Math.floor(Math.random() * 3)];
+  let slot = `${arg.charAt(0).toLowerCase()}v${compChoice
+    .charAt(0)
+    .toLowerCase()}`;
+  console.log(winOBJ[slot]);
+  alert(`${winOBJ[slot]} ${compChoice}`);
 }
-}
-*/
