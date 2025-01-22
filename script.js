@@ -721,5 +721,5 @@ function countDown(elem) {
 function countScreen() {
   let loader = document.querySelector("#loader");
   loader.classList.remove("d-none");
-  countDown(document.querySelector("#countdown"));
+  // countDown(document.querySelector("#countdown"));
 }
