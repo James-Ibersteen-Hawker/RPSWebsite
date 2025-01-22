@@ -702,24 +702,24 @@ function playGame(arg) {
   let slot = `${arg.charAt(0).toLowerCase()}v${compChoice
     .charAt(0)
     .toLowerCase()}`;
-  if (slot.charAt(0) == slot.charAt(slot.length - 1)) alert(winOBJ.tie());
+  if (slot.charAt(0) == slot.charAt(slot.length - 1));
   else {
-    round++;
-    alert(`${winOBJ[slot].run()} ${compChoice}`);
+    /*alert(winOBJ.tie())*/ round++;
+    // alert(`${winOBJ[slot].run()} ${compChoice}`);
   }
 }
 let count = 3;
 function countDown(elem) {
   if (count > 0) {
     elem.textContent = count;
-    count--;
     setTimeout(() => {
-      countDown();
+      count--;
+      countDown(elem);
     }, 1000);
   } else document.querySelector("#loader").classList.add("d-none");
 }
 function countScreen() {
   let loader = document.querySelector("#loader");
   loader.classList.remove("d-none");
-  // countDown(document.querySelector("#countdown"));
+  countDown(document.querySelector("#countdown"));
 }
