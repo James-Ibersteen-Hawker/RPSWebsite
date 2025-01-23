@@ -54,13 +54,13 @@
       <div class="col-8 secondPage pulsing" id="secondScreen">
         <div class="upperComponent d-flex justify-content-center">
           <p>Rock - Paper - Scissors</p>
-          <div class="matrix-edition1">
+          <!-- <div class="matrix-edition1">
             <div class="sides1"></div>
             <div class="subSides1"></div>
             <div class="text1">
               <span class="matrixWord1">Matrix</span>
             </div>
-          </div>
+          </div> -->
         </div>
         <div
           class="toolTipIco"
@@ -99,7 +99,13 @@
       <div class="h3Container">
         <h3 id="analyzing">Analyzing</h3>
       </div>
-      <div id="choices">3</div>
+      <div id="choices" class="row">
+        <div class="col-6">User</div>
+        <div class="col-6">Matrix</div>
+        <hr />
+        <div id="userPick" class="col-6 text-center"></div>
+        <div id="compPick" class="col-6 text-center"></div>
+      </div>
     </main>
     <footer>
       <!-- place footer here -->

@@ -32,6 +32,8 @@ let scores = {
 };
 let secondScreenYes = false;
 let username = "guest";
+let userChoice;
+let compChoice;
 const tooltipTriggerList = document.querySelectorAll(
   '[data-bs-toggle="tooltip"]'
 );
@@ -698,7 +700,8 @@ let winOBJ = {
 };
 function playGame(arg) {
   countScreen();
-  let compChoice = compChoices[Math.floor(Math.random() * 3)];
+  compChoice = compChoices[Math.floor(Math.random() * 3)];
+  userChoice = arg;
   let slot = `${arg.charAt(0).toLowerCase()}v${compChoice
     .charAt(0)
     .toLowerCase()}`;
@@ -716,16 +719,38 @@ function countDown(elem) {
     }
     setTimeout(() => {
       count--;
+      showChoices();
       countDown(elem);
     }, 1000);
   } else {
     let loader = document.querySelector("#loader");
     loader.classList.add("d-none");
+    document
+      .getElementById("secondScreen")
+      .setAttribute("style", "pointer-events: auto");
   }
 }
 function countScreen() {
   count = 3;
+  document
+    .getElementById("secondScreen")
+    .setAttribute("style", "pointer-events: none");
   let loader = document.querySelector("#loader");
   loader.classList.remove("d-none");
+  let compPickElem = document.getElementById("compPick");
+  compPickElem.textContent = "";
+  let userPickElem = document.getElementById("userPick");
+  userPickElem.textContent = "";
   countDown(document.querySelector("#countdown"));
+}
+function showChoices() {
+  if (count == 2) {
+    let userPickElem = document.getElementById("userPick");
+    userPickElem.textContent =
+      userChoice.charAt(0).toUpperCase() + userChoice.slice(1).toLowerCase();
+  } else if (count == 1) {
+    let compPickElem = document.getElementById("compPick");
+    compPickElem.textContent =
+      compChoice.charAt(0).toUpperCase() + compChoice.slice(1).toLowerCase();
+  }
 }
