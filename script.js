@@ -712,13 +712,19 @@ let count = 3;
 function countDown(elem) {
   if (count > 0) {
     elem.textContent = count;
+    switch (count) {
+    }
     setTimeout(() => {
       count--;
       countDown(elem);
     }, 1000);
-  } else document.querySelector("#loader").classList.add("d-none");
+  } else {
+    let loader = document.querySelector("#loader");
+    loader.classList.add("d-none");
+  }
 }
 function countScreen() {
+  count = 3;
   let loader = document.querySelector("#loader");
   loader.classList.remove("d-none");
   countDown(document.querySelector("#countdown"));
