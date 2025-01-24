@@ -238,7 +238,7 @@ h1::after {
   animation-name: fadeIn;
   animation-iteration-count: 1;
   animation-duration: 3s;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards !important;
   animation-timing-function: linear;
   z-index: 11 !important;
 }
@@ -254,6 +254,26 @@ h1::after {
   }
   100% {
     opacity: 0;
+  }
+}
+.fadeInFull {
+  display: block !important;
+  animation-name: fadeInFull;
+  animation-iteration-count: 1;
+  animation-duration: 3s;
+  animation-fill-mode: forwards !important;
+  animation-timing-function: linear;
+  z-index: 11 !important;
+}
+@keyframes fadeInFull {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
   }
 }
 .play {
@@ -666,7 +686,7 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 12;
+  z-index: 20 !important;
   border-radius: 20px;
 }
 #countdown,
@@ -830,6 +850,6 @@ p {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   filter: drop-shadow(0px 0px 5px rgb(82, 181, 12))
-      drop-shadow(0px 0px 3px rgb(8, 149, 8));
-      mask-image: linear-gradient(to right, transparent, black, black, transparent);
+    drop-shadow(0px 0px 3px rgb(8, 149, 8));
+  mask-image: linear-gradient(to right, transparent, black, black, transparent);
 }
