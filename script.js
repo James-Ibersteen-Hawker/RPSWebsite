@@ -1,6 +1,8 @@
 "use strict";
 let round = 0;
 let maxRound = 3;
+let username = prompt("What is your username?") || "User";
+alert(username);
 let scores = {
   userScore: 0,
   computerScore: 0,
@@ -31,7 +33,6 @@ let scores = {
   },
 };
 let secondScreenYes = false;
-let username = "guest";
 let userChoice;
 let compChoice;
 const tooltipTriggerList = document.querySelectorAll(
