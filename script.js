@@ -589,6 +589,14 @@ function countScreen() {
   fadeIn.classList.add("fadeInFull");
   setTimeout(() => {
     let loader = document.querySelector("#loader");
+    loader.classList.add("anaFadeIn");
+    setTimeout(
+      () => {
+        loader.classList.remove("anaFadeIn");
+      },
+      800,
+      loader
+    );
     loader.classList.remove("d-none");
     let compPickElem = document.getElementById("compPick");
     compPickElem.textContent = "";
@@ -615,7 +623,7 @@ function digitizeAnalyze() {
   let across = 7;
   let vert = 7;
   let base = document.getElementById("loader");
-  base.classList.remove("pulsate");
+  base.classList.remove("pulsing");
   let container = document.getElementById("digiContainerZ");
   container.classList.remove("d-none");
   let divMeasure = Math.floor(base.offsetWidth / across);
@@ -801,11 +809,6 @@ function digitizeAnalyze() {
         base,
         container
       );
-      setTimeout(() => {
-        document
-          .getElementById("digitize_screen")
-          .classList.remove("fadeInFull");
-      }, 1000);
       setTimeout(
         () => {
           digitizeScreen.classList.remove("fadeIn2");
