@@ -609,6 +609,9 @@ function showChoices() {
   }
 }
 function digitizeAnalyze() {
+  if (document.getElementById("analyzeFrazzleStyles")) {
+    document.getElementById("analyzeFrazzleStyles").remove();
+  }
   let across = 7;
   let vert = 7;
   let base = document.getElementById("loader");
@@ -643,7 +646,9 @@ function digitizeAnalyze() {
     }
     container.append(row);
   }
-  let style = document.getElementsByTagName("STYLE")[0];
+  let style = document.createElement("style");
+  style.id = "analyzeFrazzleStyles";
+  document.head.append(style);
   for (let i = 0; i < divArr.length; i++) {
     for (let q = 0; q < divArr[i].length; q++) {
       let randomInt = Math.random() * 1.2;
@@ -786,9 +791,15 @@ function digitizeAnalyze() {
       setTimeout(
         () => {
           base.classList.add("d-none");
+          base.classList.remove("off1");
+          container.remove();
+          let newContainer = document.createElement("div");
+          newContainer.id = "digiContainerZ";
+          base.append(newContainer);
         },
         2000,
-        base
+        base,
+        container
       );
       setTimeout(() => {
         document
@@ -804,6 +815,7 @@ function digitizeAnalyze() {
       );
     },
     2500,
-    base
+    base,
+    container
   );
 }
