@@ -31,7 +31,7 @@
   <body class="container-fluid">
     <div id="digitize_screen"></div>
     <div id="digitize_screen2"></div>
-    <!-- <main class="row">
+    <main class="row">
       <div
         id="digitize_frazzle"
         class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6 pulsing"
@@ -108,14 +108,14 @@
         <div id="compPick" class="col-6 text-center"></div>
       </div>
       <div id="digiContainerZ" class="d-none"></div>
-    </main> -->
-    <main id="winner" class="pulsing">
-      <div class="winnerText" id="winnerText">User Won</div>
+    </main>
+    <main id="winner" class="pulsing d-none">
+      <div class="winnerText"><p id="winnerText"></p></div>
       <div class="vs row">
-        <div class="col-6" id="winnerText"></div>
+        <div class="col-6" id="winnerName"></div>
         <div class="col-6">Matrix</div>
-        <div class="col-6"></div>
-        <div class="col-6"></div>
+        <div class="col-6" id="userChoice1"></div>
+        <div class="col-6" id="compChoice1"></div>
       </div>
     </main>
     <!-- Bootstrap JavaScript Libraries -->

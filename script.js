@@ -19,9 +19,11 @@ let scores = {
     // compElem.textContent = this.computerScore;
   },
   incr: function (arg) {
-    if (arg == 1) this.userScore++;
-    else if (arg == 2) this.computerScore++;
-    else if (arg == 0) {
+    if (arg == 1) {
+      this.userScore++;
+    } else if (arg == 2) {
+      this.computerScore++;
+    } else if (arg == 0) {
       this.userScore++;
       this.computerScore++;
     }
@@ -35,6 +37,7 @@ let scores = {
 let secondScreenYes = false;
 let userChoice;
 let compChoice;
+let winner;
 const tooltipTriggerList = document.querySelectorAll(
   '[data-bs-toggle="tooltip"]'
 );
@@ -557,16 +560,20 @@ let winOBJ = {
   },
 };
 function playGame(arg) {
-  countScreen();
-  compChoice = compChoices[Math.floor(Math.random() * 3)];
-  userChoice = arg;
-  let slot = `${arg.charAt(0).toLowerCase()}v${compChoice
-    .charAt(0)
-    .toLowerCase()}`;
-  if (slot.charAt(0) == slot.charAt(slot.length - 1));
-  else {
-    /*alert(winOBJ.tie())*/ round++;
-    // alert(`${winOBJ[slot].run()} ${compChoice}`);
+  if (round <= maxRound) {
+    countScreen();
+    compChoice = compChoices[Math.floor(Math.random() * 3)];
+    userChoice = arg;
+    let slot = `${arg.charAt(0).toLowerCase()}v${compChoice
+      .charAt(0)
+      .toLowerCase()}`;
+    if (slot.charAt(0) == slot.charAt(slot.length - 1)) winner = winOBJ.tie();
+    else {
+      winner = winOBJ[slot].run();
+      round++;
+    }
+  } else {
+    victory();
   }
 }
 let count = 3;
@@ -814,6 +821,7 @@ function digitizeAnalyze() {
       setTimeout(
         () => {
           digitizeScreen.classList.remove("fadeIn2");
+          winAlert();
         },
         3000,
         digitizeScreen
@@ -823,4 +831,14 @@ function digitizeAnalyze() {
     base,
     container
   );
+}
+function winAlert() {
+  document.getElementById("winner").classList.remove("d-none");
+  document.getElementById("winnerName").textContent = username;
+  document.getElementById("winnerText").textContent = winner;
+  document.getElementById("userChoice1").textContent = userChoice;
+  document.getElementById("compChoice1").textContent = compChoice;
+}
+function victory() {
+  console.log("victory");
 }

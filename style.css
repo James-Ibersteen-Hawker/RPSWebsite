@@ -4,7 +4,7 @@
 }
 @font-face {
   font-family: Hogers;
-  src: url(Hogers\ PERSONAL\ USE\ ONLY!.ttf);
+  src: url(Hogers.ttf);
 }
 @font-face {
   font-family: Glitch;
@@ -916,22 +916,33 @@ p {
   }
 }
 .winnerText {
-  height: 50%;
-  width: 100%;
-  background-image: url("matrixcode2.gif");
-  background-clip: text;
-  color: transparent;
+  height: calc(50% - 5px);
+  width: calc(100% - 10px);
+  left: 5px;
+  top: 5px;
+  position: relative;
   display: flex;
   justify-content: center;
-  font-size: 40px;
+  font-size: 60px;
   align-items: center;
-  font-family: "Hogers", serif;
-  filter: drop-shadow(0px 0px 3px white);
+  background: rgba(255, 255, 255, 0.1);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: 1px solid var(--border);
 }
+
+#winnerText {
+  background: url(matrixcode2.gif);
+  background-clip: text;
+  color: transparent;
+  text-decoration: underline;
+  filter: drop-shadow(0px 0px 3px white);
+  font-family: "Hogers", serif;
+}
+
 .vs {
   height: 50%;
   width: 100%;
-  background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -942,5 +953,11 @@ p {
   height: 50%;
   justify-content: center;
   align-items: flex-end;
-  border: 1px solid black;
+  font-family: "Hogers", serif;
+  font-size: 40px;
+  filter: none;
+  background: url(matrixcode2.gif);
+  filter: drop-shadow(0px 0px 3px white);
+  background-clip: text;
+  color: transparent;
 }
