@@ -17,11 +17,20 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
-    <style></style>
+    <style>
+      .off1 #countdown,
+      .off1 #analyzing,
+      .off1 #choices,
+      .off1 .h3Container {
+        display: none !important;
+        color: transparent;
+      }
+    </style>
   </head>
 
   <body class="container-fluid">
     <div id="digitize_screen"></div>
+    <div id="digitize_screen2"></div>
     <main class="row">
       <div
         id="digitize_frazzle"
@@ -54,13 +63,6 @@
       <div class="col-8 secondPage pulsing" id="secondScreen">
         <div class="upperComponent d-flex justify-content-center">
           <p>Rock - Paper - Scissors</p>
-          <!-- <div class="matrix-edition1">
-            <div class="sides1"></div>
-            <div class="subSides1"></div>
-            <div class="text1">
-              <span class="matrixWord1">Matrix</span>
-            </div>
-          </div> -->
         </div>
         <div
           class="toolTipIco"
@@ -71,7 +73,6 @@
         >
           i
         </div>
-        <!-- <h2 id="h22">choose wisely</h2> -->
         <div class="row dripping">
           <div class="category col-4" onclick="playGame('rock')">
             <span>Rock</span>

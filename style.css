@@ -193,12 +193,29 @@ h1::after {
   position: relative;
   z-index: 0;
 }
+.digiBox_analyze {
+  background: url(blackGrunge2.png) !important;
+  position: relative;
+  z-index: 0;
+}
 .digiRow {
   display: flex;
   position: relative;
   z-index: 2;
 }
+.digiRow_analyze {
+  display: flex;
+  position: relative;
+  z-index: 2;
+}
 #digiContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#digiContainerZ {
   position: absolute;
   top: 0;
   left: 0;
@@ -233,6 +250,14 @@ h1::after {
   position: absolute;
   z-index: 11 !important;
 }
+#digitize_screen2 {
+  display: none;
+  background: url(matrixcode2.gif);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 21 !important;
+}
 .fadeIn {
   display: block !important;
   animation-name: fadeIn;
@@ -241,6 +266,16 @@ h1::after {
   animation-fill-mode: forwards !important;
   animation-timing-function: linear;
   z-index: 11 !important;
+}
+.fadeIn2 {
+  display: block !important;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-duration: 3s;
+  animation-fill-mode: forwards !important;
+  animation-timing-function: linear;
+  z-index: 21 !important;
+  opacity: 0;
 }
 @keyframes fadeIn {
   0% {
@@ -803,13 +838,11 @@ p {
     color: white;
   }
 }
-
 #choices {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-
 #choices .col-6:nth-child(5),
 #choices .col-6:nth-child(4) {
   height: 55%;
@@ -826,7 +859,6 @@ p {
   padding: 0 !important;
   font-weight: 800;
 }
-
 #choices .col-6:nth-child(1),
 #choices .col-6:nth-child(2) {
   height: 45%;
@@ -838,7 +870,6 @@ p {
   color: var(--border);
   font-size: 30px;
 }
-
 #choices hr {
   width: 80%;
   height: 1px;

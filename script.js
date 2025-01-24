@@ -585,9 +585,6 @@ function countDown(elem) {
 }
 function countScreen() {
   count = 3;
-  document
-    .getElementById("secondScreen")
-    .setAttribute("style", "pointer-events: none");
   let fadeIn = document.getElementById("digitize_screen");
   fadeIn.classList.add("fadeInFull");
   setTimeout(() => {
@@ -631,7 +628,7 @@ function digitizeAnalyze() {
   for (let i = 0; i < vert; i++) {
     divArr.push(new Array());
     let row = document.createElement("div");
-    row.classList.add("digiRow");
+    row.classList.add("digiRow_analyze");
     for (let q = 0; q < across; q++) {
       let box = document.createElement("div");
       divArr[i].push(box);
@@ -736,7 +733,7 @@ function digitizeAnalyze() {
       ${direcOpp.join("")}
         }
       }`;
-      let animClass = `.box_${i}_${q} {
+      let animClass = `.box_${i}_${q}_analyze {
       background: black;
       animation-name: box_${i}_${q};
       animation-duration: 1s;
@@ -748,7 +745,65 @@ function digitizeAnalyze() {
       style.append(anim);
     }
   } //make pulse anims
-  base.classList.add("off");
+  let scaleAnim = `@keyframes scaleAnim1 {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(${
+        (Number(base.offsetHeight) / Number(window.innerHeight)) * 10
+      });
+    }
+  }`;
+  let scaleClass = `.off1 {
+      animation-name: scaleAnim1;
+      animation-duration: 5s;
+      animation-iteration-count: 1;
+      background: transparent !important;
+      border: none !important;
+      animation-delay:0s;
+      animation-fill-mode: forwards;
+      animation-timing-function: steps(20);
+  }
+  .off1::before {
+        content: "";
+        border: none !important;
+        width: calc(100%);
+        height: calc(100%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+  `;
   style.append(scaleClass);
   style.append(scaleAnim);
+  base.classList.add("off1");
+  setTimeout(
+    () => {
+      let digitizeScreen = document.getElementById("digitize_screen2");
+      digitizeScreen.classList.add("fadeIn2");
+      setTimeout(
+        () => {
+          base.classList.add("d-none");
+        },
+        2000,
+        base
+      );
+      setTimeout(() => {
+        document
+          .getElementById("digitize_screen")
+          .classList.remove("fadeInFull");
+      }, 1000);
+      setTimeout(
+        () => {
+          digitizeScreen.classList.remove("fadeIn2");
+        },
+        3000,
+        digitizeScreen
+      );
+    },
+    2500,
+    base
+  );
 }
