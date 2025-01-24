@@ -1,7 +1,7 @@
 "use strict";
 let round = 0;
 let maxRound = 3;
-let username = prompt("What is your username?") || "User";
+let username = prompt("What is your username?").split(" ")[0] || "User";
 alert(username);
 let scores = {
   userScore: 0,
@@ -591,6 +591,7 @@ function countScreen() {
   setTimeout(() => {
     let loader = document.querySelector("#loader");
     loader.classList.add("anaFadeIn");
+    document.getElementById("userNameBox").textContent = username.split(" ")[0];
     setTimeout(
       () => {
         loader.classList.remove("anaFadeIn");

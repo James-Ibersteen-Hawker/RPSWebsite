@@ -31,7 +31,7 @@
   <body class="container-fluid">
     <div id="digitize_screen"></div>
     <div id="digitize_screen2"></div>
-    <main class="row">
+    <!-- <main class="row">
       <div
         id="digitize_frazzle"
         class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6 pulsing"
@@ -101,17 +101,23 @@
         <h3 id="analyzing">Analyzing</h3>
       </div>
       <div id="choices" class="row">
-        <div class="col-6">User</div>
+        <div class="col-6" id="userNameBox"></div>
         <div class="col-6">Matrix</div>
         <hr />
         <div id="userPick" class="col-6 text-center"></div>
         <div id="compPick" class="col-6 text-center"></div>
       </div>
       <div id="digiContainerZ" class="d-none"></div>
+    </main> -->
+    <main id="winner" class="pulsing">
+      <div class="winnerText" id="winnerText">User Won</div>
+      <div class="vs row">
+        <div class="col-6" id="winnerText"></div>
+        <div class="col-6">Matrix</div>
+        <div class="col-6"></div>
+        <div class="col-6"></div>
+      </div>
     </main>
-    <footer>
-      <!-- place footer here -->
-    </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

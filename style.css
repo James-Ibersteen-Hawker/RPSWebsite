@@ -724,6 +724,20 @@ p {
   z-index: 20 !important;
   border-radius: 20px;
 }
+
+#winner {
+  width: 80%;
+  max-width: 700px;
+  aspect-ratio: 6/5;
+  background: url("blackGrunge2.png");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 14 !important;
+  border-radius: 20px;
+}
+
 #countdown,
 #choices {
   height: 35%;
@@ -784,7 +798,8 @@ p {
     font-family: "Glitch", sans-serif;
   }
 }
-#loader::before {
+#loader::before,
+#winner::before {
   content: "";
   border: 5px solid var(--border);
   filter: drop-shadow(0px 0px 5px rgb(82, 181, 12))
@@ -884,7 +899,6 @@ p {
     drop-shadow(0px 0px 3px rgb(8, 149, 8));
   mask-image: linear-gradient(to right, transparent, black, black, transparent);
 }
-
 .anaFadeIn {
   opacity: 1;
   animation-name: anaFadeIn;
@@ -893,7 +907,6 @@ p {
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
 }
-
 @keyframes anaFadeIn {
   0% {
     opacity: 0;
@@ -901,4 +914,33 @@ p {
   100% {
     opacity: 1;
   }
+}
+.winnerText {
+  height: 50%;
+  width: 100%;
+  background-image: url("matrixcode2.gif");
+  background-clip: text;
+  color: transparent;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  align-items: center;
+  font-family: "Hogers", serif;
+  filter: drop-shadow(0px 0px 3px white);
+}
+.vs {
+  height: 50%;
+  width: 100%;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+.vs .col-6 {
+  display: flex;
+  height: 50%;
+  justify-content: center;
+  align-items: flex-end;
+  border: 1px solid black;
 }
