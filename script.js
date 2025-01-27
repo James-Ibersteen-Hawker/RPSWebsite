@@ -1,6 +1,6 @@
 "use strict";
-let round = 0;
-let maxRound = 3;
+let round = 1;
+let maxRound = 5;
 let username = prompt("What is your username?").split(" ")[0] || "User";
 alert(username);
 let scores = {
@@ -13,10 +13,8 @@ let scores = {
     else console.log("It's a tie!");
   },
   print: function () {
-    // let userElem;
-    // let compElem;
-    // userElem.textContent = this.userScore;
-    // compElem.textContent = this.computerScore;
+    console.log("Userscore", this.userScore);
+    console.log("CompScore", this.computerScore);
   },
   incr: function (arg) {
     if (arg == 1) {
@@ -24,8 +22,8 @@ let scores = {
     } else if (arg == 2) {
       this.computerScore++;
     } else if (arg == 0) {
-      this.userScore++;
-      this.computerScore++;
+      this.userScore;
+      this.computerScore;
     }
     if (round < maxRound) this.print();
     else {
@@ -55,7 +53,7 @@ function digitize() {
   let across = 10;
   let vert = 7;
   let base = document.getElementById("digitize");
-  base.classList.remove("pulsate");
+  base.classList.remove("pulsing");
   let container = document.getElementById("digiContainer");
   let nextScreen = document.getElementById("container-2");
   container.classList.remove("d-none");
@@ -560,6 +558,7 @@ let winOBJ = {
   },
 };
 function playGame(arg) {
+  console.log(round);
   if (round <= maxRound) {
     countScreen();
     compChoice = compChoices[Math.floor(Math.random() * 3)];
@@ -572,8 +571,6 @@ function playGame(arg) {
       winner = winOBJ[slot].run();
       round++;
     }
-  } else {
-    victory();
   }
 }
 let count = 3;
@@ -607,6 +604,7 @@ function countScreen() {
       loader
     );
     loader.classList.remove("d-none");
+    loader.classList.add("pulsing");
     let compPickElem = document.getElementById("compPick");
     compPickElem.textContent = "";
     let userPickElem = document.getElementById("userPick");
@@ -833,12 +831,47 @@ function digitizeAnalyze() {
   );
 }
 function winAlert() {
-  document.getElementById("winner").classList.remove("d-none");
+  let winnerA = document.getElementById("winner");
+  winnerA.classList.remove("d-none");
+  winnerA.classList.add("pulsing");
+  winnerA.classList.add("fadeInFull2");
+  setTimeout(
+    () => {
+      winnerA.classList.remove("fadeInFull2");
+      winnerA.classList.add("pulsing");
+      setTimeout(
+        () => {
+          winnerA.classList.remove("pulsing");
+          winnerA.classList.add("fadeOut");
+          setTimeout(
+            () => {
+              winnerA.classList.add("d-none");
+              winnerA.classList.remove("fadeOut");
+            },
+            2000,
+            winnerA
+          );
+          setTimeout(() => {
+            document
+              .getElementById("digitize_screen")
+              .classList.remove("fadeInFull");
+            document.getElementById("digitize_screen").classList.add("fadeOut");
+            setTimeout(() => {
+              document
+                .getElementById("digitize_screen")
+                .classList.remove("fadeOut");
+            }, 2000);
+          }, 500);
+        },
+        3500,
+        winnerA
+      );
+    },
+    1000,
+    winnerA
+  );
   document.getElementById("winnerName").textContent = username;
   document.getElementById("winnerText").textContent = winner;
   document.getElementById("userChoice1").textContent = userChoice;
   document.getElementById("compChoice1").textContent = compChoice;
-}
-function victory() {
-  console.log("victory");
 }
