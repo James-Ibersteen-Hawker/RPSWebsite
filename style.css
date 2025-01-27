@@ -546,7 +546,7 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   transition: 1s;
 }
 .dripping {
-  height: 70%;
+  height: 65%;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -585,7 +585,7 @@ div[id^="box_1"]:not([id$="_sub"])::after {
   border-left: 1px solid var(--border);
 }
 .upperComponent {
-  height: 30%;
+  height: 25%;
   position: absolute;
   top: 0;
   left: 3px;
@@ -973,7 +973,6 @@ p {
 .vs .col-6:nth-child(n + 1):nth-child(-n + 2) {
   border-bottom: 1px solid var(--border);
 }
-
 .fadeOut {
   display: block !important;
   animation-name: fadeOut;
@@ -982,7 +981,6 @@ p {
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
-
 @keyframes fadeOut {
   0% {
     opacity: 1;
@@ -990,4 +988,18 @@ p {
   100% {
     opacity: 0;
   }
+}
+.topPanel {
+  background: red;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.topPanel .col-4 {
+  background: blue;
+  height: 100%;
+  color: black;
 }

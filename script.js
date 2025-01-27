@@ -1,20 +1,42 @@
 "use strict";
 let round = 1;
-let maxRound = 5;
-let username = prompt("What is your username?").split(" ")[0] || "User";
-alert(username);
+let maxRound = 3;
+let username = prompt("What is your username?").split(/\W|_/g)[0] || "User";
 let scores = {
   userScore: 0,
   computerScore: 0,
+  messages: [
+    ["The Matrix watches"],
+    ["Victory is Yours", "The Matrix Obeys", "Enter into Greatness"],
+    ["Access Denied", "Victim of the Matrix", "Hello There, Mr Anderson."],
+  ],
   final: function () {
+    let finalWinner;
     let result = this.userScore - this.computerScore;
-    if (result > 0) console.log(`${username} wins!`);
-    else if (result < 0) console.log("Computer wins!");
-    else console.log("It's a tie!");
+    if (result > 0) finalWinner = 1;
+    else if (result < 0) finalWinner = 2;
+    else finalWinner = 0;
+    let finalMessage =
+      this.messages[finalWinner][
+        Math.floor(Math.random * this.messages[finalWinner].length)
+      ];
+    document.getElementById("digitize_screen").classList.add("fadeInFull");
+    let winnerA = document.getElementById("winner");
+    winnerA.classList.remove("d-none");
+    winnerA.classList.add("pulsing");
+    winnerA.classList.add("fadeInFull2");
+    document.getElementById("winnerName").textContent = username;
+    document.getElementById("winnerText").textContent = finalMessage;
+    document.getElementById("userChoice1").textContent = this.userScore;
+    document.getElementById("compChoice1").textContent = this.computerScore;
   },
   print: function () {
-    console.log("Userscore", this.userScore);
-    console.log("CompScore", this.computerScore);
+    document.getElementById(
+      "userScore"
+    ).textContent = `${username}'s Score: ${this.userScore}`;
+    document.getElementById(
+      "compScore"
+    ).textContent = `Matrix's Score: ${this.computerScore}`;
   },
   incr: function (arg) {
     if (arg == 1) {
@@ -253,6 +275,9 @@ function digitize() {
   );
 }
 window.onload = function startUp() {
+  document.getElementById(
+    "rounds"
+  ).textContent = `Round ${round} of ${maxRound}`;
   frazzle("#digitize_frazzle");
 };
 function frazzle(param) {
@@ -856,6 +881,9 @@ function winAlert() {
               .getElementById("digitize_screen")
               .classList.remove("fadeInFull");
             document.getElementById("digitize_screen").classList.add("fadeOut");
+            document.getElementById(
+              "rounds"
+            ).textContent = `Round ${round} of ${maxRound}`;
             setTimeout(() => {
               document
                 .getElementById("digitize_screen")
