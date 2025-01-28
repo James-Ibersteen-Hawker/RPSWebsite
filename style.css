@@ -629,6 +629,33 @@ p {
   font-family: "Courier New", Courier, monospace;
   font-weight: 900;
 }
+
+#resetButton {
+  width: 40%;
+  max-width: 200px;
+  height: 50px;
+  background: url(blackGrunge2.png);
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%) scale(1);
+  border-radius: 50px;
+  border: 5px solid var(--border);
+  box-shadow: 0px 0px 5px rgb(24, 183, 24) inset, 0px 0px 5px rgb(24, 183, 24);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  color: rgb(24, 183, 24);
+  font-size: 25px;
+  transition: 1s;
+  cursor: pointer;
+}
+
+#resetButton:hover {
+  transform: translateX(-50%) scale(1.1);
+  transition: 1s;
+}
 @keyframes scalePulse {
   0% {
     transform: translate(-50%, -50%) scale(1);

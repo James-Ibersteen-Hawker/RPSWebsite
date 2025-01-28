@@ -20,7 +20,6 @@ let scores = {
       this.messages[finalWinner][
         Math.floor(Math.random() * this.messages[finalWinner].length)
       ];
-    alert(finalMessage);
     document.getElementById("digitize_screen").classList.add("fadeInFull");
     let winnerA = document.getElementById("winner");
     winnerA.classList.remove("d-none");
@@ -36,6 +35,7 @@ let scores = {
     document
       .getElementById("compChoice1")
       .setAttribute("style", "font-family: 'Arial', sans-serif;");
+    document.getElementById("resetButton").classList.remove("d-none");
   },
   print: function () {
     document.getElementById(
