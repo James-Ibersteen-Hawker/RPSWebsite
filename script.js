@@ -28,7 +28,13 @@ let scores = {
     document.getElementById("winnerName").textContent = username;
     document.getElementById("winnerText").textContent = finalMessage;
     document.getElementById("userChoice1").textContent = this.userScore;
+    document
+      .getElementById("userChoice1")
+      .setAttribute("style", "font-family: 'Arial', sans-serif;");
     document.getElementById("compChoice1").textContent = this.computerScore;
+    document
+      .getElementById("compChoice1")
+      .setAttribute("style", "font-family: 'Arial', sans-serif;");
   },
   print: function () {
     document.getElementById(
@@ -47,17 +53,17 @@ let scores = {
       this.userScore;
       this.computerScore;
     }
-    if (round < maxRound) this.print();
-    else {
-      this.print();
-      this.final();
-    }
   },
 };
 let secondScreenYes = false;
 let userChoice;
 let compChoice;
 let winner;
+let opp = {
+  r: "paper",
+  p: "scissors",
+  s: "rock",
+};
 const tooltipTriggerList = document.querySelectorAll(
   '[data-bs-toggle="tooltip"]'
 );
@@ -278,6 +284,8 @@ window.onload = function startUp() {
   document.getElementById(
     "rounds"
   ).textContent = `Round ${round} of ${maxRound}`;
+  document.getElementById("userScore").textContent = `${username}'s Score: 0`;
+  document.getElementById("compScore").textContent = `Matrix's Score: 0`;
   frazzle("#digitize_frazzle");
 };
 function frazzle(param) {
@@ -583,11 +591,12 @@ let winOBJ = {
   },
 };
 function playGame(arg) {
-  console.log(round);
   if (round <= maxRound) {
     countScreen();
-    compChoice = compChoices[Math.floor(Math.random() * 3)];
+    compChoice = compChoices[Math.floor(Math.random() * compChoices.length)];
     userChoice = arg;
+    compChoices.push(opp[userChoice.charAt(0).toLowerCase()]);
+    alert(compChoices);
     let slot = `${arg.charAt(0).toLowerCase()}v${compChoice
       .charAt(0)
       .toLowerCase()}`;
@@ -649,6 +658,7 @@ function showChoices() {
   }
 }
 function digitizeAnalyze() {
+  scores.print();
   if (document.getElementById("analyzeFrazzleStyles")) {
     document.getElementById("analyzeFrazzleStyles").remove();
   }
@@ -860,10 +870,13 @@ function winAlert() {
   winnerA.classList.remove("d-none");
   winnerA.classList.add("pulsing");
   winnerA.classList.add("fadeInFull2");
+  document.getElementById("winnerName").textContent = username;
+  document.getElementById("winnerText").textContent = winner;
+  document.getElementById("userChoice1").textContent = userChoice;
+  document.getElementById("compChoice1").textContent = compChoice;
   setTimeout(
     () => {
       winnerA.classList.remove("fadeInFull2");
-      winnerA.classList.add("pulsing");
       setTimeout(
         () => {
           winnerA.classList.remove("pulsing");
@@ -876,30 +889,32 @@ function winAlert() {
             2000,
             winnerA
           );
-          setTimeout(() => {
-            document
-              .getElementById("digitize_screen")
-              .classList.remove("fadeInFull");
-            document.getElementById("digitize_screen").classList.add("fadeOut");
-            document.getElementById(
-              "rounds"
-            ).textContent = `Round ${round} of ${maxRound}`;
+          if (round > maxRound) {
+            scores.final();
+          } else {
             setTimeout(() => {
               document
                 .getElementById("digitize_screen")
-                .classList.remove("fadeOut");
-            }, 2000);
-          }, 500);
+                .classList.remove("fadeInFull");
+              document
+                .getElementById("digitize_screen")
+                .classList.add("fadeOut");
+              document.getElementById(
+                "rounds"
+              ).textContent = `Round ${round} of ${maxRound}`;
+              setTimeout(() => {
+                document
+                  .getElementById("digitize_screen")
+                  .classList.remove("fadeOut");
+              }, 2000);
+            }, 1000);
+          }
         },
-        3500,
+        3000,
         winnerA
       );
     },
     1000,
     winnerA
   );
-  document.getElementById("winnerName").textContent = username;
-  document.getElementById("winnerText").textContent = winner;
-  document.getElementById("userChoice1").textContent = userChoice;
-  document.getElementById("compChoice1").textContent = compChoice;
 }
