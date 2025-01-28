@@ -587,12 +587,13 @@ div[id^="box_1"]:not([id$="_sub"])::after {
 .upperComponent {
   height: 25%;
   position: absolute;
-  top: 0;
+  top: 10%;
   left: 3px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  line-height: 50px;
 }
 p {
   color: transparent;
@@ -613,7 +614,7 @@ p {
 .toolTipIco {
   cursor: pointer;
   position: absolute;
-  top: 20px;
+  top: calc(10% - 10px);
   right: 20px;
   background: rgb(37, 177, 56);
   height: 20px;
@@ -990,16 +991,20 @@ p {
   }
 }
 .topPanel {
-  background: red;
   width: 100%;
   height: 10%;
+  padding-top: 10px !important;
   display: flex;
   flex-direction: row;
   align-items: center;
+  border-bottom: 1px solid var(--border);
 }
-
 .topPanel .col-4 {
-  background: blue;
   height: 100%;
   color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 0px 0px 1px white, 0px 0px 1px white, 0px 0px 1px white;
 }

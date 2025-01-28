@@ -1,14 +1,14 @@
 "use strict";
 let round = 1;
-let maxRound = 3;
+let maxRound = 5;
 let username = prompt("What is your username?").split(/\W|_/g)[0] || "User";
 let scores = {
   userScore: 0,
   computerScore: 0,
   messages: [
-    ["The Matrix watches"],
+    ["The Matrix Watches", "The Matrix Watches", "The Matrix Watches"],
     ["Victory is Yours", "The Matrix Obeys", "Enter into Greatness"],
-    ["Access Denied", "Victim of the Matrix", "Hello There, Mr Anderson."],
+    ["Access Denied", "Victim of the Matrix", "You Lost"],
   ],
   final: function () {
     let finalWinner;
@@ -18,8 +18,9 @@ let scores = {
     else finalWinner = 0;
     let finalMessage =
       this.messages[finalWinner][
-        Math.floor(Math.random * this.messages[finalWinner].length)
+        Math.floor(Math.random() * this.messages[finalWinner].length)
       ];
+    alert(finalMessage);
     document.getElementById("digitize_screen").classList.add("fadeInFull");
     let winnerA = document.getElementById("winner");
     winnerA.classList.remove("d-none");
@@ -596,7 +597,6 @@ function playGame(arg) {
     compChoice = compChoices[Math.floor(Math.random() * compChoices.length)];
     userChoice = arg;
     compChoices.push(opp[userChoice.charAt(0).toLowerCase()]);
-    alert(compChoices);
     let slot = `${arg.charAt(0).toLowerCase()}v${compChoice
       .charAt(0)
       .toLowerCase()}`;
@@ -879,7 +879,6 @@ function winAlert() {
       winnerA.classList.remove("fadeInFull2");
       setTimeout(
         () => {
-          winnerA.classList.remove("pulsing");
           winnerA.classList.add("fadeOut");
           setTimeout(
             () => {
@@ -890,7 +889,13 @@ function winAlert() {
             winnerA
           );
           if (round > maxRound) {
-            scores.final();
+            setTimeout(
+              () => {
+                scores.final();
+              },
+              2000,
+              scores
+            );
           } else {
             setTimeout(() => {
               document
