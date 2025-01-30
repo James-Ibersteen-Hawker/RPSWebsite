@@ -629,11 +629,9 @@ p {
   font-weight: 900;
   transform: rotate(45deg);
 }
-
 .toolTipIco div {
   transform: rotate(-45deg);
 }
-
 #resetButton {
   width: 40%;
   max-width: 200px;
@@ -655,7 +653,6 @@ p {
   transition: 1s;
   cursor: pointer;
 }
-
 #resetButton:hover {
   transform: translateX(-50%) scale(1.1);
   transition: 1s;

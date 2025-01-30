@@ -1,6 +1,6 @@
 "use strict";
 let round = 1;
-let maxRound = 5;
+let maxRound = 3;
 let username = prompt("What is your username?").split(/\W|_/g)[0] || "User";
 let scores = {
   userScore: 0,
@@ -892,6 +892,9 @@ function winAlert() {
                 }, 1000);
               } else {
                 //fadeToMain, after 1 sec
+                document.getElementById(
+                  "rounds"
+                ).textContent = `Round ${round} of ${maxRound}`;
                 setTimeout(() => {
                   document
                     .getElementById("digitize_screen")
