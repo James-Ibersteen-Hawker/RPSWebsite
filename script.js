@@ -879,43 +879,42 @@ function winAlert() {
       winnerA.classList.remove("fadeInFull2");
       setTimeout(
         () => {
+          winnerA.classList.remove("pulsing");
           winnerA.classList.add("fadeOut");
           setTimeout(
             () => {
-              winnerA.classList.add("d-none");
               winnerA.classList.remove("fadeOut");
+              winnerA.classList.add("d-none");
+              //fadeToWin, after 1 sec
+              if (round > maxRound) {
+                setTimeout(() => {
+                  scores.final();
+                }, 1000);
+              } else {
+                //fadeToMain, after 1 sec
+                setTimeout(() => {
+                  document
+                    .getElementById("digitize_screen")
+                    .classList.add("fadeOut");
+                  document
+                    .getElementById("digitize_screen")
+                    .classList.remove("fadeInFull");
+                  setTimeout(() => {
+                    document
+                      .getElementById("digitize_screen")
+                      .classList.remove("fadeOut");
+                    document
+                      .getElementById("digitize_screen")
+                      .classList.add("d-none");
+                  }, 2000);
+                }, 1000);
+              }
             },
             2000,
             winnerA
           );
-          if (round > maxRound) {
-            setTimeout(
-              () => {
-                scores.final();
-              },
-              2000,
-              scores
-            );
-          } else {
-            setTimeout(() => {
-              document
-                .getElementById("digitize_screen")
-                .classList.remove("fadeInFull");
-              document
-                .getElementById("digitize_screen")
-                .classList.add("fadeOut");
-              document.getElementById(
-                "rounds"
-              ).textContent = `Round ${round} of ${maxRound}`;
-              setTimeout(() => {
-                document
-                  .getElementById("digitize_screen")
-                  .classList.remove("fadeOut");
-              }, 2000);
-            }, 1000);
-          }
         },
-        3000,
+        5000,
         winnerA
       );
     },
