@@ -1,6 +1,6 @@
 "use strict";
 let round = 1;
-let maxRound = 3;
+let maxRound = 5;
 let username = prompt("What is your username?").split(/\W|_/g)[0] || "User";
 let scores = {
   userScore: 0,
